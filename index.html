@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Workouts </title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div id="app">
+			<h1>Enter Workouts Below</h1>
+			Name: <input type="text" v-model="inputName">
+			Muscle Group: <input type="text" v-model="inputMuscle">
+			Sets: <input type="text" v-model="inputSets">
+			Reps: <input type="text" v-model="inputReps">
+			Weight: <input type="text" v-model="inputWeight">
+			<button v-on:click="updateWorkout">Save</button>
+			<h2>Workouts</h2>
+			<ul>
+				<li v-for="exercise in workouts">Name: {{exercise.name}} <br><br>Muscle-Group: {{exercise.muscle}} <br><br>Sets: {{exercise.sets}} <br><br>Reps: {{exercise.reps}} <br><br>Weight: {{exercise.weight}}</li>
+			</ul>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
