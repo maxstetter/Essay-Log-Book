@@ -1,3 +1,7 @@
+//////////////////First username: staff Password: Liahona2022
+
+//login using: mongo "mongodb+srv://logbookcluster.fkflk.mongodb.net/Students" --username staff
+
 const mongoose = require ('mongoose')
 
 mongoose.connect('INSERT URL')
