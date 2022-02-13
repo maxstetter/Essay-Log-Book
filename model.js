@@ -4,7 +4,7 @@
 
 const mongoose = require ('mongoose')
 
-mongoose.connect('INSERT URL')
+mongoose.connect('mongodb+srv://staff:Liahona2022@logbookcluster.fkflk.mongodb.net/Students?retryWrites=true&w=majority');
 
 const Student = mongoose.model('Student', {
 	fname: String,
@@ -20,8 +20,8 @@ const Essay = mongoose.model('Essay', {
 	student: Object,
 	size: Number,
 	reason: String,
-	Time: Date,
-	From: String,
+	time: Date,
+	from: String,
 	completed: Boolean
 });
 

@@ -1,61 +1,73 @@
+//const { response } = require("express");
+
 var app = new Vue({
 	el: '#app',
 	data: {
 		workouts: [],
-		workoutlist: [{
+		Essays: [],
+		Students: [],
+		studentlist: [{
 		}],
-		inputName: "" ,
-		inputMuscle: "",
-		inputSets: "",
-		inputReps: "",
-		inputWeight: "" 
+		inputFname: "" ,
+		inputLname: "",
+		inputBirthday: "",
+		inputDoa: ""
 	},
 	methods: {
 		clickMe: function() {
 		},
-		updateWorkout: function () {
+		updateStudent: function () {
 
-			var data = "name=" +encodeURIComponent(this.inputName);
-			data += "&muscle=" +encodeURIComponent(this.inputMuscle);
-			data += "&sets=" +encodeURIComponent(this.inputSets);
-			data += "&reps=" +encodeURIComponent(this.inputReps);
-			data += "&weight=" +encodeURIComponent(this.inputWeight);
+			var data = "fname=" +encodeURIComponent(this.inputFname);
+			data += "&lname=" +encodeURIComponent(this.inputLname);
+			data += "&birthday=" +encodeURIComponent(this.inputBirthday);
+			data += "&doa=" +encodeURIComponent(this.inputDoa);
+			//data += "&weight=" +encodeURIComponent(this.inputWeight);
 
-			fetch("http://localhost:3000/workouts", {
+			fetch("http://localhost:3000/students", {
 				method: "POST",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
 				 }).then((response) => {
-					 this.fetchWorkoutsFromServer();
+					 this.fetchStudentsFromServer();
 				 });
 				 
-			this.workoutlist.push({
+			this.studentlist.push({
 				name: this.inputName,
 				muscle: this.inputMuscle,
 				sets: this.inputSets,
 				reps: this.inputReps,
 				weight: this.inputWeight			
 			})
-			this.inputName = ""
-			this.inputMuscle = ""
-			this.inputSets = ""
-			this.inputReps = ""
-			this.inputWeight = ""
+			this.inputFname = ""
+			this.inputLname = ""
+			this.inputBirthday = ""
+			this.inputDoa = ""
 		},
 
-		fetchWorkoutsFromServer: function(){ //vue assigns 'this' to the app
-			fetch("http://localhost:3000/workouts").then((response) => {
+		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
+			fetch("http://localhost:3000/essays").then((response) => {
 				console.log("server contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);
-					this.workouts = data;
+					this.Essays = data;
 				})
 			});
+		},
+
+		fetchStudentsFromServer: function(){
+			fetch("http://localhost:3000/students").then((response) => {
+				console.log("students contacted.")
+				response.json().then((data) =>{
+					console.log("data: ", data);
+					this.Students = data;
+				})
+			})
 		}
 	},
 	created: function () {
 	console.log("App is loaded and ready.");
-	this.fetchWorkoutsFromServer();
+	this.fetchStudentsFromServer();
 	}
 });
 

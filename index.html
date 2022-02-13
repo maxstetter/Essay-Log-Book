@@ -6,16 +6,18 @@
 	</head>
 	<body>
 		<div id="app">
-			<h1>Enter Workouts Below</h1>
-			Name: <input type="text" v-model="inputName">
-			Muscle Group: <input type="text" v-model="inputMuscle">
-			Sets: <input type="text" v-model="inputSets">
-			Reps: <input type="text" v-model="inputReps">
-			Weight: <input type="text" v-model="inputWeight">
-			<button v-on:click="updateWorkout">Save</button>
-			<h2>Workouts</h2>
+			<h1>Create a New Student Below</h1>
+			First Name: <input type="text" v-model="inputFname">
+			Last Name: <input type="text" v-model="inputLname">
+			Birthday: <input type="date" v-model="inputBirthday">
+			Date of Arrival: <input type="date" v-model="inputDoa">
+			<button v-on:click="updateStudent">Save</button>
+			<h2>Students</h2>
 			<ul>
 				<li v-for="exercise in workouts">Name: {{exercise.name}} <br><br>Muscle-Group: {{exercise.muscle}} <br><br>Sets: {{exercise.sets}} <br><br>Reps: {{exercise.reps}} <br><br>Weight: {{exercise.weight}}</li>
+			</ul>
+			<ul>
+				<li v-for="student in Students">First Name: {{student.fname}}<br><br>Last Name: {{student.fname}}<br><br>Birthday: {{student.birthday}}<br><br>Date of Arrival: {{student.doa}}<br><br>Points: {{student.points}}</li>
 			</ul>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
