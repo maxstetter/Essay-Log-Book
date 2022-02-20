@@ -16,8 +16,56 @@ var app = new Vue({
 	methods: {
 		clickMe: function() {
 		},
-		updateStudent: function () {
-
+		/* EXAMPLE DATA VALIDATION
+		validateName: function (){
+			//validate entries.
+			if (this.inputName.length == 0){
+				return false;
+			}
+			if (!["asdf", "asdf"].includes(this.inputFname.toLowerCase())){
+				return false;
+			}
+			return true;
+		},
+		*/
+		validatefName: function (){
+			if (this.inputFname.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validatelName: function (){
+			if (this.inputLname.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateBirthday: function (){
+			if (this.inputBirthday.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateDoa: function (){
+			if (this.inputDoa.length == 0){
+				return false;
+			}
+			return true;
+		},
+		createStudent: function () {
+			
+			/* VALIDATION EXAMPLE
+			if (!this.validateName()){
+				return;
+			}
+			*/
+			if (!this.validatefName()){
+				return;
+			}
+			if (!this.validatelName()){
+				return;
+			}
+			
 			var data = "fname=" +encodeURIComponent(this.inputFname);
 			data += "&lname=" +encodeURIComponent(this.inputLname);
 			data += "&birthday=" +encodeURIComponent(this.inputBirthday);
