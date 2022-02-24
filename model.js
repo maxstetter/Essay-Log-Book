@@ -6,15 +6,42 @@ const mongoose = require ('mongoose')
 
 mongoose.connect('mongodb+srv://staff:Liahona2022@logbookcluster.fkflk.mongodb.net/Students?retryWrites=true&w=majority');
 
-const Student = mongoose.model('Student', {
-	fname: String,
-	lname: String,
-	birthday: Date,
-	doa: Date,
-	points: Number,
-	essays: Array, //Use Subdocument?
-	notes: Array
+/*
+const schema = new mongoose.Schema({
+	name: {
+		type: String,
+		required: [true, "name is required."]
+	},
+	species: {
+		type: String,
+		required: [true, "species is required."]
+	}
 });
+
+const ASDF = mongoose.model('asdf', schema);
+*/
+
+const studentSchema = new mongoose.Schema({
+	fname: {
+		type: String,
+		required: [true, "First name is required."]
+	},
+	lname: {
+		type: String,
+		required: [true, "Last name is required."]
+	},
+	birthday: {
+		type: Date,
+		required: [true, "Birthday is required."]
+	},
+	doa: {
+		type: Date,
+		required: [true, "Date of Arrival is required."]
+	}
+});
+
+const Student = mongoose.model('Student', studentSchema);
+
 
 const Essay = mongoose.model('Essay', {
 	student: Object,

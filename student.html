@@ -20,7 +20,9 @@
 			<div id="bottom">
 				<h1>Students</h1>
 				<ul>
-					<li v-for="student in Students">First Name: {{student.fname}}<br><br>Last Name: {{student.lname}}<br><br>Birthday: {{student.birthday}}<br><br>Date of Arrival: {{student.doa}}<br><br>Points: {{student.points}}</li>
+					<li v-for="student in Students">First Name: {{student.fname}}<br><br>Last Name: {{student.lname}}<br><br>Birthday: {{student.birthday}}<br><br>Date of Arrival: {{student.doa}}<br><br>Points: {{student.points}}
+					<button @click="deleteStudent(student)">X</button>
+					</li>
 				</ul>
 			</div>
 		</div>

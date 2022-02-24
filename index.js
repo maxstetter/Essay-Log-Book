@@ -11,7 +11,7 @@ const port = 3000
 app.use(cors());
 /*
 app.get('/essays/:essayId', (req, res) => {
-    console.log("the Essay ID: ", req.params/essayId);
+    console.log("the Essay ID: ", req.params.essayId);
     
     Essay.findOne({
         _id: req.params.essayId
@@ -27,9 +27,9 @@ app.get('/essays/:essayId', (req, res) => {
         res.sendStatus(400);
     });
 })
-//for DELETE use error code 500 pair find and delete
+//for DELETE use error code 500 pair find and delete use "find" for delete.
 */
-
+// use err 422 for validation fail.
 /*
     CCORS
     Delete all Access-Control-Allow-Origin
@@ -56,6 +56,22 @@ app.get('/students', (req, res) => {
     });
 })
 
+app.get('/students/:studentId', (req, res) => {
+    console.log("StudentID: ", req.params.studentId);
+    Student.findOne({
+        _id: req.params.studentId
+    }).then((student) => {
+        if (student){
+            res.json(student);
+        } else {
+            res.sendStatus(404);
+        }
+    }).catch(error => {
+        console.error("DB query failed.");
+        res.sendStatus(400);
+    });
+})
+
 app.get('/progressnotes', (req, res) => {
 //    res.set('Access-Control-Allow-Origin','*');
     Note.find().then((notes) => {
@@ -77,9 +93,17 @@ app.post('/students', (req, res) => {
     student.save().then(()=> {
 //    res.set('Access-Control-Allow-Origin', '*');
     res.status(201).send("Student Saved")
-    }).catch(()=> {
-//        res.set('Access-Control-Allow-Origin', '*');
-        res.status(500).send("Server Error!")
+    }).catch((error)=> {
+        console.error("Error occured while creating a student: ", error);
+        if (error.errors){
+            errors = {};
+            for (let e in error.errors) {
+                errorMessages[e] = error.errors[e].message;
+            }
+            res.status(422).json(errorMessages);
+        } else {
+            res.status(500).send("Server Error!")
+        }
     });
 })
 

@@ -1,5 +1,7 @@
 //const { response } = require("express");
 
+const { response } = require("express");
+
 var app = new Vue({
 	el: '#app',
 	data: {
@@ -28,6 +30,17 @@ var app = new Vue({
 			return true;
 		},
 		*/
+		deleteStudent: function (student) {
+			fetch("http://localhost:3000/students/"+student._id).then(response =>{
+				method: 'DELETE'	
+			}).then(response => {
+				if (response.status == 204){
+					this.fetchStudentsFromServer();
+				} else {
+					console.error("error deleting student: ", student);
+				}
+			});
+		},
 		validatefName: function (){
 			if (this.inputFname.length == 0){
 				return false;
