@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Essay Log Book </title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="http://clipart-library.com/images/6cyXxxnxi.png">
+	</head>
+	<body>
+		<div id="app">
+			<div id="top">
+				<div class="forms">
+					<h1>Log an Essay</h1>
+					First Name: <input type="text" class="question" v-model="inputFname">
+					Last Name: <input type="text" class="question" v-model="inputLname">
+					Birthday: <input type="date" class="question" v-model="inputBirthday">
+					Date of Arrival: <input type="date" class="question" v-model="inputDoa">
+					<button v-on:click="createStudent">Create</button>
+				</div>
+			</div>
+			<div id="bottom">
+				<h1>Students</h1>
+				<ul>
+					<li v-for="student in Students">First Name: {{student.fname}}<br><br>Last Name: {{student.lname}}<br><br>Birthday: {{student.birthday}}<br><br>Date of Arrival: {{student.doa}}<br><br>Points: {{student.points}}
+					<button @click="deleteStudent(student)">X</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>

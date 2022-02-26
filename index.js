@@ -42,6 +42,22 @@ app.get('/essays/:essayId', (req, res) => {
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json({}))
 
+app.delete('/students/:studentId', (req, res) => {
+    console.log("Delete student: ", req.params.studentId);
+    Student.findOneAndDelete({
+        _id: req.params.studentId
+    }).then((student) => {
+        if (student){
+            res.sendStatus(204);
+        } else {
+            res.sendStatus(500);
+        }
+    }).catch(error => {
+        console.error("Delete student failed.");
+        res.sendStatus(404)
+    })
+})
+
 app.get('/essays', (req, res) => {
 //    app.set('Access-Control-Allow-Origin','*');
     Essay.find().then((essays) => {

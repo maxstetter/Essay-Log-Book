@@ -1,15 +1,10 @@
 //const { response } = require("express");
 
-const { response } = require("express");
-
 var app = new Vue({
 	el: '#app',
 	data: {
-		workouts: [],
 		Essays: [],
 		Students: [],
-		studentlist: [{
-		}],
 		inputFname: "" ,
 		inputLname: "",
 		inputBirthday: "",
@@ -30,9 +25,10 @@ var app = new Vue({
 			return true;
 		},
 		*/
+		
 		deleteStudent: function (student) {
-			fetch("http://localhost:3000/students/"+student._id).then(response =>{
-				method: 'DELETE'	
+			console.log("student._id: ", student._id);
+			fetch("http://localhost:3000/students/"+student._id, { method: "DELETE"	
 			}).then(response => {
 				if (response.status == 204){
 					this.fetchStudentsFromServer();
@@ -41,6 +37,7 @@ var app = new Vue({
 				}
 			});
 		},
+		
 		validatefName: function (){
 			if (this.inputFname.length == 0){
 				return false;
@@ -93,13 +90,6 @@ var app = new Vue({
 					 this.fetchStudentsFromServer();
 				 });
 				 
-			this.studentlist.push({
-				name: this.inputName,
-				muscle: this.inputMuscle,
-				sets: this.inputSets,
-				reps: this.inputReps,
-				weight: this.inputWeight			
-			})
 			this.inputFname = ""
 			this.inputLname = ""
 			this.inputBirthday = ""
