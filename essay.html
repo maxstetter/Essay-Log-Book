@@ -10,11 +10,12 @@
 			<div id="top">
 				<div class="forms">
 					<h1>Log an Essay</h1>
-					First Name: <input type="text" class="question" v-model="inputFname">
-					Last Name: <input type="text" class="question" v-model="inputLname">
-					Birthday: <input type="date" class="question" v-model="inputBirthday">
-					Date of Arrival: <input type="date" class="question" v-model="inputDoa">
-					<button v-on:click="createStudent">Create</button>
+					Student: <select>
+						<option v-for="student in Students">{{student.fname}} {{student.lname}}</option>
+					</select>
+					Date: <input type="date" class="question" v-model="inputEdate">
+					Selected Student:
+					<button v-on:click="createStudent">Log</button>
 				</div>
 			</div>
 			<div id="bottom">

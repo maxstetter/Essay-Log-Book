@@ -8,7 +8,8 @@ var app = new Vue({
 		inputFname: "" ,
 		inputLname: "",
 		inputBirthday: "",
-		inputDoa: ""
+		inputDoa: "",
+		inputEdate: ""
 	},
 	methods: {
 		clickMe: function() {
