@@ -58,10 +58,53 @@ app.delete('/students/:studentId', (req, res) => {
     })
 })
 
+app.get('/students/:studentId', (req, res) => {
+    console.log("the student ID: ", req.params.studentId);
+    
+    Student.findOne({
+        _id: req.params.studentId
+    }).then((student) => {
+        if (student){
+        app.set('Access-Control-Allow-Origin','*');
+        res.json(student);
+        } else {
+            res.sendStatus(404);
+        }
+    }).catch(error => {
+        console.error("DB query failed.");
+        res.sendStatus(400);
+    })
+})
+
 app.get('/essays', (req, res) => {
-//    app.set('Access-Control-Allow-Origin','*');
     Essay.find().then((essays) => {
         res.json(essays);
+    });
+})
+
+app.post('/essays', (req, res) =>{
+    console.log("raw request body: ", req.body);
+    var essay = new Essay({
+        size: req.body.size,
+        reason: req.body.reason,
+        time: req.body.time,
+        from: req.body.from,
+        completed: false,
+        //STUDENT
+    });
+    essay.save().then(()=> {
+        res.status(201).send("Essay Logged.")
+    }).catch((error)=> {
+        console.error("Error occured while creating an essay.", error)
+        if(error.errors){
+            errors = {};
+            for (let e in error.errors){
+                errorMessages[e] = error.errors[e].message;
+            }
+            res.status(422).json(errorMessages);
+        } else {
+            res.status(500).send("Server Error!")
+        }
     });
 })
 
@@ -71,7 +114,7 @@ app.get('/students', (req, res) => {
         res.json(students);
     });
 })
-
+/* EXTRA?
 app.get('/students/:studentId', (req, res) => {
     console.log("StudentID: ", req.params.studentId);
     Student.findOne({
@@ -87,7 +130,7 @@ app.get('/students/:studentId', (req, res) => {
         res.sendStatus(400);
     });
 })
-
+*/
 app.get('/progressnotes', (req, res) => {
 //    res.set('Access-Control-Allow-Origin','*');
     Note.find().then((notes) => {

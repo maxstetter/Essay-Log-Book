@@ -1,5 +1,3 @@
-//const { response } = require("express");
-
 var app = new Vue({
 	el: '#app',
 	data: {
@@ -9,7 +7,10 @@ var app = new Vue({
 		inputLname: "",
 		inputBirthday: "",
 		inputDoa: "",
-		inputEdate: ""
+		inputEdate: "",
+		inputFrom: "",
+		inputReason: "",
+		inputSize: "",
 	},
 	methods: {
 		clickMe: function() {
@@ -37,6 +38,17 @@ var app = new Vue({
 					console.error("error deleting student: ", student);
 				}
 			});
+		},
+
+		retreiveStudent: function (student) {
+			fetch("http://localhost:3000/students/"+student._id, { method: "GET"
+			}).then(response => {
+				if (response.status == 202){
+					this.fetchStudentsFromServer();
+				} else {
+					console.error("Error retrieving student: ", student);
+				}
+			})
 		},
 		
 		validatefName: function (){
@@ -97,6 +109,41 @@ var app = new Vue({
 			this.inputDoa = ""
 		},
 
+		createEssay: function () {
+/*			
+			if (!this.validateSize()){
+				return;
+			}
+			if (!this.validateDate()){
+				return;
+			}
+			if (!this.validateReason()){
+				return;
+			}
+			if (!this.validateFrom()){
+				return;
+			}
+*/
+			
+			var data = "size=" +encodeURIComponent(this.inputSize);
+			data += "&reason=" +encodeURIComponent(this.inputReason);
+			data += "&time=" +encodeURIComponent(this.inputEdate);
+			data += "&from=" +encodeURIComponent(this.inputFrom);
+			
+			fetch("http://localhost:3000/essays", {
+				method: "POST",
+				body: data,
+				headers: {"Content-Type": "application/x-www-form-urlencoded"}
+				 }).then((response) => {
+					 this.fetchEssaysFromServer();
+				 });
+				 
+			this.inputReason = ""
+			this.inputSize = ""
+			this.inputEdate = ""
+			this.inputFrom = ""
+		},
+
 		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
 			fetch("http://localhost:3000/essays").then((response) => {
 				console.log("server contacted.")
@@ -120,6 +167,7 @@ var app = new Vue({
 	created: function () {
 	console.log("App is loaded and ready.");
 	this.fetchStudentsFromServer();
+	this.fetchEssaysFromServer();
 	}
 });
 

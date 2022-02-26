@@ -13,16 +13,19 @@
 					Student: <select>
 						<option v-for="student in Students">{{student.fname}} {{student.lname}}</option>
 					</select>
+					Reason: <input type="text" v-model="inputReason">
+					Size: <input type="number" v-model="inputSize">
+					From: <input type="text" v-model="inputFrom">
 					Date: <input type="date" class="question" v-model="inputEdate">
+					
 					Selected Student:
-					<button v-on:click="createStudent">Log</button>
+					<button v-on:click="createEssay">Log</button>
 				</div>
 			</div>
 			<div id="bottom">
-				<h1>Students</h1>
+				<h1>Essays</h1>
 				<ul>
-					<li v-for="student in Students">First Name: {{student.fname}}<br><br>Last Name: {{student.lname}}<br><br>Birthday: {{student.birthday}}<br><br>Date of Arrival: {{student.doa}}<br><br>Points: {{student.points}}
-					<button @click="deleteStudent(student)">X</button>
+					<li v-for="essay in Essays">Student: {{essay.student}}<br><br>Size: {{essay.size}}<br><br>Reason: {{essay.reason}}<br><br>Date: {{essay.time}}<br><br>From: {{essay.from}} <br><br> Completed: {{essay.completed}}
 					</li>
 				</ul>
 			</div>
