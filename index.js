@@ -42,6 +42,19 @@ app.get('/essays/:essayId', (req, res) => {
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json({}))
 
+app.put('/essays/:essayId', (req, res)=> {
+    Essay.findOneAndUpdate({
+        _id: req.params.essayId},
+        {completed: true
+    }).then((essay) => {
+        if(essay){
+            res.sendStatus(202);
+        } else {
+            res.sendStatus(500);
+        }
+    })
+})
+
 app.delete('/students/:studentId', (req, res) => {
     console.log("Delete student: ", req.params.studentId);
     Student.findOneAndDelete({

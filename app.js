@@ -1,3 +1,4 @@
+
 var app = new Vue({
 	el: '#app',
 	data: {
@@ -142,6 +143,17 @@ var app = new Vue({
 			this.inputSize = ""
 			this.inputEdate = ""
 			this.inputFrom = ""
+		},
+
+		markEssay: function(essay){
+			fetch("http://localhost:3000/essays/"+essay._id, { method: "PUT"
+			}).then(response => {
+				if(response.status == 202){
+					this.fetchEssaysFromServer();
+				} else {
+					console.error("Error marking essay.", essay);
+				}
+			})
 		},
 
 		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
