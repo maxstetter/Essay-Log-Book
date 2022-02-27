@@ -146,7 +146,8 @@ var app = new Vue({
 		},
 
 		markEssay: function(essay){
-			fetch("http://localhost:3000/essays/"+essay._id, { method: "PUT"
+			var data = "completed=" +essay.completed;
+			fetch("http://localhost:3000/essays/"+essay._id, { method: "PUT", body: data, headers: {"Content-Type": "application/x-www-form-urlencoded"}
 			}).then(response => {
 				if(response.status == 202){
 					this.fetchEssaysFromServer();

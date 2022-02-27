@@ -32,7 +32,7 @@
 						From: {{essay.from}}<br><br>
 						Completed: {{essay.completed}}
 						<label class="switch">
-							<input @change="markEssay(essay)" type="checkbox">
+							<input v-model="essay.completed" @change="markEssay(essay)" type="checkbox">
 							<span class="slider round"></span>
 						</label>
 					</li>

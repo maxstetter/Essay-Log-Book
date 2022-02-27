@@ -45,7 +45,7 @@ app.use(express.json({}))
 app.put('/essays/:essayId', (req, res)=> {
     Essay.findOneAndUpdate({
         _id: req.params.essayId},
-        {completed: true
+        {completed: req.body.completed
     }).then((essay) => {
         if(essay){
             res.sendStatus(202);
