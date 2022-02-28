@@ -25,12 +25,12 @@
 			<div id="bottom">
 				<h1>Essays</h1>
 				<ul>
-					<li v-for="essay in Essays" :style="[essay.completed ? {'background-color': '#A2E4B8'} : {'background-color': '#ff7f7f'}]">Student: {{essay.student}}<br><br>
+					<li v-for="essay in Essays" :style="[essay.completed ? {'background-color': '#A2E4B8', 'transition': 'background-color 1s'} : {'background-color': '#ff7f7f', 'transition': 'background-color 1s'}]">Student: {{essay.student}}<br><br>
 						Size: {{essay.size}}<br><br>
 						Reason: {{essay.reason}}<br><br>
 						Date: {{essay.time}}<br><br>
 						From: {{essay.from}}<br><br>
-						Completed: {{essay.completed}}
+						Completed: 
 						<label class="switch">
 							<input v-model="essay.completed" @change="markEssay(essay)" type="checkbox">
 							<span class="slider round"></span>
