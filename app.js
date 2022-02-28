@@ -28,7 +28,8 @@ var app = new Vue({
 			return true;
 		},
 		*/
-		
+
+
 		deleteStudent: function (student) {
 			console.log("student._id: ", student._id);
 			fetch("http://localhost:3000/students/"+student._id, { method: "DELETE"	
