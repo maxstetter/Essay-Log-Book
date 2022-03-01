@@ -44,13 +44,11 @@
 			<div id="bottom">
 				<h1>Notes</h1>
 				<ul>
-					<li v-for="student in Students">First Name: {{student.fname}}<br><br>
-                        Last Name: {{student.lname}}<br><br>
-                        Birthday: {{student.birthday}}<br><br>
-                        Date of Arrival: {{student.doa}}<br><br>
-                        Points: {{student.points}}<br><br>
-                        Size: {{essay.size}}
-					</li>
+					<li v-for="note in Notes">
+                        Note: {{note.prognote}}<br>
+                        From: {{note.from}}<br>
+                        Date: {{note.date}}
+                    </li>
 				</ul>
 			</div>
 		</div>

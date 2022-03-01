@@ -144,10 +144,34 @@ app.get('/students/:studentId', (req, res) => {
     });
 })
 */
-app.get('/progressnotes', (req, res) => {
+app.get('/notes', (req, res) => {
 //    res.set('Access-Control-Allow-Origin','*');
     Note.find().then((notes) => {
         res.json(notes);
+    });
+})
+
+app.post('/notes', (req, res) => {
+    console.log("Raw request body: ", req.body);
+    var note = new Note({
+        prognote: req.body.prognote,
+        date: req.body.date,
+        from: req.body.from,
+    });
+    note.save().then(()=> {
+//    res.set('Access-Control-Allow-Origin', '*');
+    res.status(201).send("Note Saved")
+    }).catch((error)=> {
+        console.error("Error occured while creating a note: ", error);
+        if (error.errors){
+            errors = {};
+            for (let e in error.errors) {
+                errorMessages[e] = error.errors[e].message;
+            }
+            res.status(422).json(errorMessages);
+        } else {
+            res.status(500).send("Server Error!")
+        }
     });
 })
 

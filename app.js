@@ -4,6 +4,7 @@ var app = new Vue({
 	data: {
 		Essays: [],
 		Students: [],
+		Notes: [],
 		inputFname: "" ,
 		inputLname: "",
 		inputBirthday: "",
@@ -12,6 +13,9 @@ var app = new Vue({
 		inputFrom: "",
 		inputReason: "",
 		inputSize: "",
+		inputNfrom: "",
+		inputNdate: "",
+		inputNote: "",
 	},
 	methods: {
 		clickMe: function() {
@@ -158,6 +162,34 @@ var app = new Vue({
 			})
 		},
 
+		createNote: function(){
+			var data = "prognote=" +encodeURIComponent(this.inputNote);
+			data += "&date=" +encodeURIComponent(this.inputNdate);
+			data += "&from=" +encodeURIComponent(this.inputNfrom);
+			
+			fetch("http://localhost:3000/notes", {
+				method: "POST",
+				body: data,
+				headers: {"Content-Type": "application/x-www-form-urlencoded"}
+				 }).then((response) => {
+					 this.fetchNotesFromServer();
+				 });
+				 
+			this.inputNote = ""
+			this.inputNdate = ""
+			this.inputNfrom = ""
+		},
+
+		fetchNotesFromServer: function(){ //vue assigns 'this' to the app
+			fetch("http://localhost:3000/notes").then((response) => {
+				console.log("server contacted.")
+				response.json().then((data) =>{
+					console.log("data: ", data);
+					this.Notes = data;
+				})
+			});
+		},
+
 		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
 			fetch("http://localhost:3000/essays").then((response) => {
 				console.log("server contacted.")
@@ -182,6 +214,7 @@ var app = new Vue({
 	console.log("App is loaded and ready.");
 	this.fetchStudentsFromServer();
 	this.fetchEssaysFromServer();
+	this.fetchNotesFromServer();
 	}
 });
 
