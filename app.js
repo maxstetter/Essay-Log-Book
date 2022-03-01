@@ -46,6 +46,18 @@ var app = new Vue({
 			});
 		},
 
+		deleteEssay: function (essay) {
+			console.log("essay._id: ", essay._id);
+			fetch("http://localhost:3000/essays/"+essay._id, { method: "DELETE"	
+			}).then(response => {
+				if (response.status == 204){
+					this.fetchEssaysFromServer();
+				} else {
+					console.error("error deleting essay: ", essay);
+				}
+			});
+		},
+		
 		retreiveStudent: function (student) {
 			fetch("http://localhost:3000/students/"+student._id, { method: "GET"
 			}).then(response => {

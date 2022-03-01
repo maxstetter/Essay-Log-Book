@@ -56,6 +56,7 @@
 							<input v-model="essay.completed" @change="markEssay(essay)" type="checkbox">
 							<span class="slider round"></span>
 						</label>
+						<button @click="deleteEssay(essay)" :style="[essay.completed ? {'background-color': '#A2E4B8', 'transition': 'background-color 1s'} : {'background-color': '#ff7f7f', 'transition': 'background-color 1s'}]">Delete</button>
 					</li>
 				</ul>
 			</div>

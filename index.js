@@ -55,10 +55,26 @@ app.put('/essays/:essayId', (req, res)=> {
     })
 })
 
-app.delete('/students/:studentId', (req, res) => {
-    console.log("Delete student: ", req.params.studentId);
+app.delete('/essays/:essayid', (req, res) => {
+    console.log("delete essay: ", req.params.essayid);
+    Essay.findOneAndDelete({
+        _id: req.params.essayid
+    }).then((essay) => {
+        if (essay){
+            res.sendStatus(204);
+        } else {
+            res.sendStatus(500);
+        }
+    }).catch(error => {
+        console.error("delete essay failed.");
+        res.sendstatus(404)
+    })
+})
+
+app.delete('/students/:studentid', (req, res) => {
+    console.log("delete student: ", req.params.studentid);
     Student.findOneAndDelete({
-        _id: req.params.studentId
+        _id: req.params.studentid
     }).then((student) => {
         if (student){
             res.sendStatus(204);
@@ -66,8 +82,8 @@ app.delete('/students/:studentId', (req, res) => {
             res.sendStatus(500);
         }
     }).catch(error => {
-        console.error("Delete student failed.");
-        res.sendStatus(404)
+        console.error("delete student failed.");
+        res.sendstatus(404)
     })
 })
 
