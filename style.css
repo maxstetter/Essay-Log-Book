@@ -5,7 +5,7 @@ body{
     margin-left: 0%;
     margin-right: 0%;
 }
-
+/*
 #top{
     background-color: #003e29;
     color: #A2E4B8;
@@ -14,11 +14,32 @@ body{
     padding-left: 5%;
     padding-right: 5%;
 }
-
+*/
+#top{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 12vh;
+    background-color: #003e29;
+    color:#A2E4B8;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 1%;
+}
+.activity{
+    background-color: #003e29;
+    padding-top: 15px;
+    padding-left: 1%;
+}
+.activity h1{
+    margin-bottom: 0px;
+    color: #A2E4B8;
+}
+/*
 .forms{
 justify-content: space-between;
 }
-
+*/
 input{
     background-color: #A2E4B8;
     color: #003e29;
@@ -70,7 +91,11 @@ select{
     margin-right: 10px;
 }
 
-
+#note{
+    width: 50%;
+    height: 80px;
+    background-color: #A2E4B8;
+}
 
 
 
@@ -177,6 +202,10 @@ nav{
     margin: 5px;
     background-color: #003e29; 
 }
+
+
+
+
 
 @media screen and (max-width:768px){
     body{

@@ -18,7 +18,7 @@
 					<a href="essay.html">Essays</a>
 				</li>
 				<li>
-					<a href="#">Notes</a>
+					<a href="notes.html">Notes</a>
 				</li>
 			</ul>
 			<div class="burger">
@@ -28,25 +28,28 @@
 			</div>
 		</nav>
 		<div id="app">
-			<div class="activity">
-				<h1>Create a New Student Below</h1>
-			</div>
+
+                <div class="activity">
+					<h1>Progress Notes</h1>
+                </div> 
 			<div id="top">
-					First Name: <input type="text" class="question" v-model="inputFname">
-					Last Name: <input type="text" class="question" v-model="inputLname">
-					Birthday: <input type="date" class="question" v-model="inputBirthday">
-					Date of Arrival: <input type="date" class="question" v-model="inputDoa">
-					<button v-on:click="createStudent">Create</button>
+					Student: <select>
+						<option v-for="student in Students">{{student.fname}} {{student.lname}}</option>
+					</select>
+					From: <input type="text" v-model="inputNfrom">
+					Date: <input type="date" class="question" v-model="inputNdate">
+					Note: <textarea id="note" v-model="inputNote"></textarea>
+					<button v-on:click="createNote">Log</button>
 			</div>
 			<div id="bottom">
-				<h1>Students</h1>
+				<h1>Notes</h1>
 				<ul>
 					<li v-for="student in Students">First Name: {{student.fname}}<br><br>
-						Last Name: {{student.lname}}<br><br>
-						Birthday: {{student.birthday}}<br><br>
-						Date of Arrival: {{student.doa}}<br><br>
-						Points: {{student.points}}
-					<button @click="deleteStudent(student)">X</button>
+                        Last Name: {{student.lname}}<br><br>
+                        Birthday: {{student.birthday}}<br><br>
+                        Date of Arrival: {{student.doa}}<br><br>
+                        Points: {{student.points}}<br><br>
+                        Size: {{essay.size}}
 					</li>
 				</ul>
 			</div>

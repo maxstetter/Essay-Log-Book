@@ -28,9 +28,10 @@
 			</div>
 		</nav>
 		<div id="app">
+			<div class="activity">
+				<h1>Log an Essay</h1>
+			</div>
 			<div id="top">
-				<div class="forms">
-					<h1>Log an Essay</h1>
 					Student: <select>
 						<option v-for="student in Students">{{student.fname}} {{student.lname}}</option>
 					</select>
@@ -41,7 +42,6 @@
 					
 					Selected Student:
 					<button v-on:click="createEssay">Log</button>
-				</div>
 			</div>
 			<div id="bottom">
 				<h1>Essays</h1>
