@@ -5,6 +5,7 @@ var app = new Vue({
 		Essays: [],
 		Students: [],
 		Notes: [],
+		selectStudent: null,
 		inputFname: "" ,
 		inputLname: "",
 		inputBirthday: "",
@@ -147,6 +148,7 @@ var app = new Vue({
 			data += "&reason=" +encodeURIComponent(this.inputReason);
 			data += "&time=" +encodeURIComponent(this.inputEdate);
 			data += "&from=" +encodeURIComponent(this.inputFrom);
+			data += "&student=" + encodeURIComponent(this.selectStudent);
 			
 			fetch("http://localhost:3000/essays", {
 				method: "POST",
@@ -202,6 +204,7 @@ var app = new Vue({
 			});
 		},
 
+//check out URLsearchparam
 		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
 			fetch("http://localhost:3000/essays").then((response) => {
 				console.log("server contacted.")
@@ -211,7 +214,18 @@ var app = new Vue({
 				})
 			});
 		},
-
+/*
+filtering and sorting stuff.
+		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
+			fetch("http://localhost:3000/essays?student=" +encodeURIComponent(filterStudent)).then((response) => {
+				console.log("server contacted.")
+				response.json().then((data) =>{
+					console.log("data: ", data);
+					this.Essays = data;
+				})
+			});
+		},
+*/
 		fetchStudentsFromServer: function(){
 			fetch("http://localhost:3000/students").then((response) => {
 				console.log("students contacted.")

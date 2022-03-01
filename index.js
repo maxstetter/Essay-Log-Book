@@ -110,7 +110,30 @@ app.get('/essays', (req, res) => {
         res.json(essays);
     });
 })
+/* FILERING
+app.get('/essays', (req, res) => {
+    Essay.find({fname: 'Max'}).then((essays) => {
+        res.json(essays);
+    });
+})
+/////////////////OR////////////////
 
+app.get('/essays', (req, res) => {
+
+    console.log("the request query parameters are: ", req.query)
+
+    var query = {};
+    if (req.query.name) {
+        query.name = req.query.name;
+    }
+
+    Essay.find(query).sort('lname').then((essays) => {
+        res.json(essays);
+    });
+})
+
+
+*/
 app.post('/essays', (req, res) =>{
     console.log("raw request body: ", req.body);
     var essay = new Essay({
@@ -119,7 +142,7 @@ app.post('/essays', (req, res) =>{
         time: req.body.time,
         from: req.body.from,
         completed: false,
-        //STUDENT
+        student: req.body.student
     });
     essay.save().then(()=> {
         res.status(201).send("Essay Logged.")

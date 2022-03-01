@@ -32,8 +32,8 @@
 				<h1>Log an Essay</h1>
 			</div>
 			<div id="top">
-					Student: <select>
-						<option v-for="student in Students">{{student.fname}} {{student.lname}}</option>
+					Student: <select v-model="selectStudent">
+						<option v-for="student in Students" :value="student._id" >{{student.fname}} {{student.lname}}</option>
 					</select>
 					Reason: <input type="text" v-model="inputReason">
 					Size: <input type="number" v-model="inputSize">
