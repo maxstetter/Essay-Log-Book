@@ -46,10 +46,10 @@
 				<ul>
 					<li v-for="note in Notes">
 						<div v-for="student in Students" v-if="student._id == note.student"><h3>{{student.fname}} {{student.lname}}</h3></div>
-                        From: {{note.from}}<br>
-                        Date: {{note.date}}<br>
-                        Note:  
-						<span class="note" v-if="!note.edit" v-on:click="$set(note, 'edit', !note.edit)">{{note.prognote}}<br></span>
+                        <strong>From:</strong> {{note.from}}<br><br>
+                    	<strong>Date:</strong> {{note.date}}<br><br>
+                        <strong>Note:</strong>  
+						<span class="note" v-if="!note.edit" v-on:click="$set(note, 'edit', !note.edit)">{{note.prognote}}<br><br></span>
 							<div v-if="note.edit">
 								<textarea id="EDITNOTE" name="EDITNOTE" rows="10" cols="50" v-model="note.prognote">{{note.prognote}}</textarea>
 							</div>

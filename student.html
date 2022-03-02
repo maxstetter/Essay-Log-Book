@@ -41,11 +41,10 @@
 			<div id="bottom">
 				<h1>Students</h1>
 				<ul>
-					<li v-for="student in Students">First Name: {{student.fname}}<br><br>
-						Last Name: {{student.lname}}<br><br>
-						Birthday: {{student.birthday}}<br><br>
-						Date of Arrival: {{student.doa}}<br><br>
-						Points: {{student.points}}
+					<li v-for="student in Students">
+						<h3>{{student.fname}} {{student.lname}}</h3>
+						<strong>Birthday:</strong> {{student.birthday}}<br><br>
+						<strong>Date of Arrival:</strong> {{student.doa}}<br><br>
 					<button @click="deleteStudent(student)">X</button>
 					</li>
 				</ul>
