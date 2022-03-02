@@ -55,6 +55,19 @@ app.put('/essays/:essayId', (req, res)=> {
     })
 })
 
+app.put('/notes/:noteId', (req, res)=> {
+    Note.findOneAndUpdate({
+        _id: req.params.noteId},
+        {prognote: req.body.prognote
+    }).then((note) => {
+        if(note){
+            res.sendStatus(202);
+        } else {
+            res.sendStatus(500);
+        }
+    })
+})
+
 app.delete('/essays/:essayid', (req, res) => {
     console.log("delete essay: ", req.params.essayid);
     Essay.findOneAndDelete({
@@ -196,6 +209,7 @@ app.post('/notes', (req, res) => {
         prognote: req.body.prognote,
         date: req.body.date,
         from: req.body.from,
+        student: req.body.student
     });
     note.save().then(()=> {
 //    res.set('Access-Control-Allow-Origin', '*');

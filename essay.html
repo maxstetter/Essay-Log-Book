@@ -40,13 +40,13 @@
 					From: <input type="text" v-model="inputFrom">
 					Date: <input type="date" class="question" v-model="inputEdate">
 					
-					Selected Student:
 					<button v-on:click="createEssay">Log</button>
 			</div>
 			<div id="bottom">
 				<h1>Essays</h1>
 				<ul>
-					<li v-for="essay in Essays" :style="[essay.completed ? {'background-color': '#A2E4B8', 'transition': 'background-color 1s'} : {'background-color': '#ff7f7f', 'transition': 'background-color 1s'}]">Student: {{essay.student}}<br><br>
+					<li v-for="essay in Essays" :style="[essay.completed ? {'background-color': '#A2E4B8', 'transition': 'background-color 1s'} : {'background-color': '#ff7f7f', 'transition': 'background-color 1s'}]">	
+						<div v-for="student in Students" v-if="student._id == essay.student"><h3>{{student.fname}} {{student.lname}}</h3></div>
 						Size: {{essay.size}}<br><br>
 						Reason: {{essay.reason}}<br><br>
 						Date: {{essay.time}}<br><br>

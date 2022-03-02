@@ -176,10 +176,27 @@ var app = new Vue({
 			})
 		},
 
+		editNote: function(note){
+			var data = "prognote=" +note.prognote;
+			console.log("ASDF")
+			fetch("http://localhost:3000/notes/"+note._id, { 
+				method: "PUT",
+				body: data,
+				headers: {"Content-Type": "application/x-www-form-urlencoded"}
+			}).then(response => {
+				if(response.status == 202){
+					this.fetchNotesFromServer();
+				} else {
+					console.error("Error editing note.", note);
+				}
+			})
+		},
+		
 		createNote: function(){
 			var data = "prognote=" +encodeURIComponent(this.inputNote);
 			data += "&date=" +encodeURIComponent(this.inputNdate);
 			data += "&from=" +encodeURIComponent(this.inputNfrom);
+			data += "&student=" +encodeURIComponent(this.selectStudent);
 			
 			fetch("http://localhost:3000/notes", {
 				method: "POST",
