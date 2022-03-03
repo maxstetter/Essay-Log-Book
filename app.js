@@ -143,13 +143,12 @@ var app = new Vue({
 				return;
 			}
 */
-			
 			var data = "size=" +encodeURIComponent(this.inputSize);
 			data += "&reason=" +encodeURIComponent(this.inputReason);
 			data += "&time=" +encodeURIComponent(this.inputEdate);
 			data += "&from=" +encodeURIComponent(this.inputFrom);
 			data += "&student=" + encodeURIComponent(this.selectStudent);
-			
+	//TODO: for every fetch request, will need to change url.				
 			fetch("http://localhost:3000/essays", {
 				method: "POST",
 				body: data,
