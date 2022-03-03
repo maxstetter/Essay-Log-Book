@@ -1,4 +1,3 @@
-const port = process.env.PORT || 3000
 const express = require('express')
 const model = require('./model')
 const cors = require('cors')
@@ -7,6 +6,7 @@ const Student = model.Student;
 const Note = model.Note;
 
 const app = express()
+const port = process.env.PORT
 
 app.use(express.static('public'));
 app.use(cors());
