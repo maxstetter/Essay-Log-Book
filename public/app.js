@@ -37,7 +37,7 @@ var app = new Vue({
 
 		deleteStudent: function (student) {
 			console.log("student._id: ", student._id);
-			fetch("http://localhost:3000/students/"+student._id, { method: "DELETE"	
+			fetch("https://essay-log-book.herokuapp.com/students/"+student._id, { method: "DELETE"	
 			}).then(response => {
 				if (response.status == 204){
 					this.fetchStudentsFromServer();
@@ -49,7 +49,7 @@ var app = new Vue({
 
 		deleteEssay: function (essay) {
 			console.log("essay._id: ", essay._id);
-			fetch("http://localhost:3000/essays/"+essay._id, { method: "DELETE"	
+			fetch("https://essay-log-book.herokuapp.com/essays/"+essay._id, { method: "DELETE"	
 			}).then(response => {
 				if (response.status == 204){
 					this.fetchEssaysFromServer();
@@ -60,7 +60,7 @@ var app = new Vue({
 		},
 		
 		retreiveStudent: function (student) {
-			fetch("http://localhost:3000/students/"+student._id, { method: "GET"
+			fetch("https://essay-log-book.herokuapp.com/students/"+student._id, { method: "GET"
 			}).then(response => {
 				if (response.status == 202){
 					this.fetchStudentsFromServer();
@@ -114,7 +114,7 @@ var app = new Vue({
 			data += "&doa=" +encodeURIComponent(this.inputDoa);
 			//data += "&weight=" +encodeURIComponent(this.inputWeight);
 
-			fetch("http://localhost:3000/students", {
+			fetch("https://essay-log-book.herokuapp.com/students", {
 				method: "POST",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -149,7 +149,7 @@ var app = new Vue({
 			data += "&from=" +encodeURIComponent(this.inputFrom);
 			data += "&student=" + encodeURIComponent(this.selectStudent);
 	//TODO: for every fetch request, will need to change url.				
-			fetch("http://localhost:3000/essays", {
+			fetch("https://essay-log-book.herokuapp.com/essays", {
 				method: "POST",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -165,7 +165,7 @@ var app = new Vue({
 
 		markEssay: function(essay){
 			var data = "completed=" +essay.completed;
-			fetch("http://localhost:3000/essays/"+essay._id, { method: "PUT", body: data, headers: {"Content-Type": "application/x-www-form-urlencoded"}
+			fetch("https://essay-log-book.herokuapp.com/essays/"+essay._id, { method: "PUT", body: data, headers: {"Content-Type": "application/x-www-form-urlencoded"}
 			}).then(response => {
 				if(response.status == 202){
 					this.fetchEssaysFromServer();
@@ -178,7 +178,7 @@ var app = new Vue({
 		editNote: function(note){
 			var data = "prognote=" +note.prognote;
 			console.log("ASDF")
-			fetch("http://localhost:3000/notes/"+note._id, { 
+			fetch("https://essay-log-book.herokuapp.com/notes/"+note._id, { 
 				method: "PUT",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -197,7 +197,7 @@ var app = new Vue({
 			data += "&from=" +encodeURIComponent(this.inputNfrom);
 			data += "&student=" +encodeURIComponent(this.selectStudent);
 			
-			fetch("http://localhost:3000/notes", {
+			fetch("https://essay-log-book.herokuapp.com/notes", {
 				method: "POST",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -211,7 +211,7 @@ var app = new Vue({
 		},
 
 		fetchNotesFromServer: function(){ //vue assigns 'this' to the app
-			fetch("http://localhost:3000/notes").then((response) => {
+			fetch("https://essay-log-book.herokuapp.com/notes").then((response) => {
 				console.log("server contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);
@@ -222,7 +222,7 @@ var app = new Vue({
 
 //check out URLsearchparam
 		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
-			fetch("http://localhost:3000/essays").then((response) => {
+			fetch("https://essay-log-book.herokuapp.com/essays").then((response) => {
 				console.log("server contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);
@@ -243,7 +243,7 @@ filtering and sorting stuff.
 		},
 */
 		fetchStudentsFromServer: function(){
-			fetch("https://essay-log-book.herokuapp.com/").then((response) => {
+			fetch("https://essay-log-book.herokuapp.com/students").then((response) => {
 				console.log("students contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);
