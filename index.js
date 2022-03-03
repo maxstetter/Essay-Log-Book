@@ -8,6 +8,7 @@ const Note = model.Note;
 const app = express()
 const port = process.env.PORT
 
+app.use('/static', express.static('public'));
 app.use(cors());
 /*
 app.get('/essays/:essayId', (req, res) => {
@@ -40,7 +41,6 @@ app.get('/essays/:essayId', (req, res) => {
 
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json({}))
-app.use(express.static("public"));
 
 app.put('/essays/:essayId', (req, res)=> {
     Essay.findOneAndUpdate({
