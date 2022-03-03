@@ -1,6 +1,6 @@
 # Essay Log Book
 
-The Essay Log Book is used to keep track of a student's daily progress and their essay count.
+The Essay Log Book is used to keep track of students, essays, and progress notes.
 
 # Resources
 
@@ -8,25 +8,20 @@ The Essay Log Book is used to keep track of a student's daily progress and their
 **Attributes**
 * First Name - string
 * Last Name - string
-* Birthday - int?
-* Date of Arrival - int?
-* Points - int
-* Essays - Essay Object
-* Progress Notes - Progress Object
+* Birthday - date
+* Date of Arrival - date
 
 ## Essays
 **Attributes**
 * Student - Student Object
 * Size - int
 * Reason - string
-* Time - int?
 * From - string
 * Completed - bool
 
 ## Progress Notes
 **Attributes**
-* Student - Student Object
-* Date - int?
+* Student - student sbject
+* Date - date
 * Notes - string
-* Quote - bool
-* Visit - bool
+* From - string
