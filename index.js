@@ -8,7 +8,7 @@ const Note = model.Note;
 const app = express()
 const port = process.env.PORT
 
-app.use('/static', express.static('public'));
+app.use('/', express.static(path.join(__dirname, '/public')));
 app.use(cors());
 /*
 app.get('/essays/:essayId', (req, res) => {
