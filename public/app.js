@@ -243,7 +243,7 @@ filtering and sorting stuff.
 		},
 */
 		fetchStudentsFromServer: function(){
-			fetch("http://localhost:3000/students").then((response) => {
+			fetch("https://essay-log-book.herokuapp.com/").then((response) => {
 				console.log("students contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);
