@@ -8,6 +8,7 @@ const Note = model.Note;
 const app = express()
 const port = process.env.PORT || 3000
 
+app.use(express.static('public'));
 app.use(cors());
 /*
 app.get('/essays/:essayId', (req, res) => {
@@ -36,7 +37,6 @@ app.get('/essays/:essayId', (req, res) => {
     npm install cors
 
 */
-
 
 
 app.use(express.urlencoded({ extended: false}))
