@@ -21,18 +21,6 @@ var app = new Vue({
 	methods: {
 		clickMe: function() {
 		},
-		/* EXAMPLE DATA VALIDATION
-		validateName: function (){
-			//validate entries.
-			if (this.inputName.length == 0){
-				return false;
-			}
-			if (!["asdf", "asdf"].includes(this.inputFname.toLowerCase())){
-				return false;
-			}
-			return true;
-		},
-		*/
 
 
 		deleteStudent: function (student) {
@@ -96,11 +84,6 @@ var app = new Vue({
 		},
 		createStudent: function () {
 			
-			/* VALIDATION EXAMPLE
-			if (!this.validateName()){
-				return;
-			}
-			*/
 			if (!this.validatefName()){
 				return;
 			}
@@ -220,7 +203,6 @@ var app = new Vue({
 			});
 		},
 
-//check out URLsearchparam
 		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
 			fetch("https://essay-log-book.herokuapp.com/essays").then((response) => {
 				console.log("server contacted.")
@@ -230,18 +212,6 @@ var app = new Vue({
 				})
 			});
 		},
-/*
-filtering and sorting stuff.
-		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
-			fetch("http://localhost:3000/essays?student=" +encodeURIComponent(filterStudent)).then((response) => {
-				console.log("server contacted.")
-				response.json().then((data) =>{
-					console.log("data: ", data);
-					this.Essays = data;
-				})
-			});
-		},
-*/
 		fetchStudentsFromServer: function(){
 			fetch("https://essay-log-book.herokuapp.com/students").then((response) => {
 				console.log("students contacted.")
@@ -260,9 +230,47 @@ filtering and sorting stuff.
 	}
 });
 
+
+
+
+////////////////////////////////////////NOTES/////////////////////////////////////
+
 // v-for - add the v-for to the element that is going to be repeated. 
 // v-if
 // v-else
 // v-show
 // use {{ SOMETHING }} to use as the target to be injected.
 
+
+//check out URLsearchparam
+/*
+filtering and sorting stuff.
+		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
+			fetch("http://localhost:3000/essays?student=" +encodeURIComponent(filterStudent)).then((response) => {
+				console.log("server contacted.")
+				response.json().then((data) =>{
+					console.log("data: ", data);
+					this.Essays = data;
+				})
+			});
+		},
+*/
+
+			/* VALIDATION EXAMPLE
+			if (!this.validateName()){
+				return;
+			}
+			*/
+		
+		/* EXAMPLE DATA VALIDATION
+		validateName: function (){
+			//validate entries.
+			if (this.inputName.length == 0){
+				return false;
+			}
+			if (!["asdf", "asdf"].includes(this.inputFname.toLowerCase())){
+				return false;
+			}
+			return true;
+		},
+		*/
