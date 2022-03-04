@@ -10,33 +10,6 @@ const port = process.env.PORT
 
 app.use(express.static("public"));
 app.use(cors());
-/*
-app.get('/essays/:essayId', (req, res) => {
-    console.log("the Essay ID: ", req.params.essayId);
-    
-    Essay.findOne({
-        _id: req.params.essayId
-    }).then((essay) => {
-        if (essay){
-        app.set('Access-Control-Allow-Origin','*');
-        res.json(essay);
-        } else {
-            res.sendStatus(404);
-        }
-    }).catch(error => {
-        console.error("DB query failed.");
-        res.sendStatus(400);
-    });
-})
-//for DELETE use error code 500 pair find and delete use "find" for delete.
-*/
-// use err 422 for validation fail.
-/*
-    CCORS
-    Delete all Access-Control-Allow-Origin
-    npm install cors
-
-*/
 
 
 app.use(express.urlencoded({ extended: false}))
@@ -123,30 +96,7 @@ app.get('/essays', (req, res) => {
         res.json(essays);
     });
 })
-/* FILERING
-app.get('/essays', (req, res) => {
-    Essay.find({fname: 'Max'}).then((essays) => {
-        res.json(essays);
-    });
-})
-/////////////////OR////////////////
 
-app.get('/essays', (req, res) => {
-
-    console.log("the request query parameters are: ", req.query)
-
-    var query = {};
-    if (req.query.name) {
-        query.name = req.query.name;
-    }
-
-    Essay.find(query).sort('lname').then((essays) => {
-        res.json(essays);
-    });
-})
-
-
-*/
 app.post('/essays', (req, res) =>{
     console.log("raw request body: ", req.body);
     var essay = new Essay({
@@ -174,30 +124,11 @@ app.post('/essays', (req, res) =>{
 })
 
 app.get('/students', (req, res) => {
-//    res.set('Access-Control-Allow-Origin','*');
     Student.find().then((students) => {
         res.json(students);
     });
 })
-/* EXTRA?
-app.get('/students/:studentId', (req, res) => {
-    console.log("StudentID: ", req.params.studentId);
-    Student.findOne({
-        _id: req.params.studentId
-    }).then((student) => {
-        if (student){
-            res.json(student);
-        } else {
-            res.sendStatus(404);
-        }
-    }).catch(error => {
-        console.error("DB query failed.");
-        res.sendStatus(400);
-    });
-})
-*/
 app.get('/notes', (req, res) => {
-//    res.set('Access-Control-Allow-Origin','*');
     Note.find().then((notes) => {
         res.json(notes);
     });
@@ -212,7 +143,6 @@ app.post('/notes', (req, res) => {
         student: req.body.student
     });
     note.save().then(()=> {
-//    res.set('Access-Control-Allow-Origin', '*');
     res.status(201).send("Note Saved")
     }).catch((error)=> {
         console.error("Error occured while creating a note: ", error);
@@ -240,7 +170,6 @@ app.post('/students', (req, res) => {
         notes: []
     });
     student.save().then(()=> {
-//    res.set('Access-Control-Allow-Origin', '*');
     res.status(201).send("Student Saved")
     }).catch((error)=> {
         console.error("Error occured while creating a student: ", error);
@@ -261,3 +190,78 @@ app.post('/students', (req, res) => {
 app.listen(port, () => {
     console.log(`Essay App listening at http://localhost:${port}`)
 })
+
+
+
+
+
+
+
+////////////////////////////NOTES/////////////////////////////////
+
+/*
+app.get('/essays/:essayId', (req, res) => {
+    console.log("the Essay ID: ", req.params.essayId);
+    
+    Essay.findOne({
+        _id: req.params.essayId
+    }).then((essay) => {
+        if (essay){
+        app.set('Access-Control-Allow-Origin','*');
+        res.json(essay);
+        } else {
+            res.sendStatus(404);
+        }
+    }).catch(error => {
+        console.error("DB query failed.");
+        res.sendStatus(400);
+    });
+})
+//for DELETE use error code 500 pair find and delete use "find" for delete.
+*/
+// use err 422 for validation fail.
+/*
+    CCORS
+    Delete all Access-Control-Allow-Origin
+    npm install cors
+
+/* EXTRA?
+app.get('/students/:studentId', (req, res) => {
+    console.log("StudentID: ", req.params.studentId);
+    Student.findOne({
+        _id: req.params.studentId
+    }).then((student) => {
+        if (student){
+            res.json(student);
+        } else {
+            res.sendStatus(404);
+        }
+    }).catch(error => {
+        console.error("DB query failed.");
+        res.sendStatus(400);
+    });
+})
+
+/* FILERING
+app.get('/essays', (req, res) => {
+    Essay.find({fname: 'Max'}).then((essays) => {
+        res.json(essays);
+    });
+})
+/////////////////OR////////////////
+
+app.get('/essays', (req, res) => {
+
+    console.log("the request query parameters are: ", req.query)
+
+    var query = {};
+    if (req.query.name) {
+        query.name = req.query.name;
+    }
+
+    Essay.find(query).sort('lname').then((essays) => {
+        res.json(essays);
+    });
+})
+
+*/
