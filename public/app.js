@@ -109,9 +109,35 @@ var app = new Vue({
 			this.inputDoa = ""
 		},
 
+		validateSize: function (){
+			if (this.inputSize.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateDate: function (){
+			if (this.inputEdate.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateReason: function (){
+			if (this.inputReason.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateFrom: function (){
+			if (this.inputFrom.length == 0){
+				return false;
+			}
+			return true;
+		},
+
 		createEssay: function () {
-/*			
+		
 			if (!this.validateSize()){
+				alert("SHADDUP!")
 				return;
 			}
 			if (!this.validateDate()){
@@ -123,7 +149,7 @@ var app = new Vue({
 			if (!this.validateFrom()){
 				return;
 			}
-*/
+
 			var data = "size=" +encodeURIComponent(this.inputSize);
 			data += "&reason=" +encodeURIComponent(this.inputReason);
 			data += "&time=" +encodeURIComponent(this.inputEdate);
