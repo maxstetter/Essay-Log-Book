@@ -32,7 +32,7 @@ https://essay-log-book.herokuapp.com/
  # Schema
 
  ## Student Schema
-'''
+```
 	fname: {
 		type: String,
 		required: [true, "First name is required."]
@@ -49,10 +49,10 @@ https://essay-log-book.herokuapp.com/
 		type: Date,
 		required: [true, "Date of Arrival is required."]
 	},
-'''
+```
 
 ## Note Schema
-'''
+```
 	prognote: {
 		type: String,
 		required: [true, "Progress note is required."]
@@ -66,10 +66,10 @@ https://essay-log-book.herokuapp.com/
 		required: [true, "Prognote from is required."]
 	},
 	student: { type: Schema.Types.ObjectId, ref: 'Student'},
-'''
+```
 
 ## Essay Schema
-'''
+```
 	size: {
 		type: Number,
 		required: [true, "Essay size is required."]
@@ -88,7 +88,7 @@ https://essay-log-book.herokuapp.com/
 	},
 	completed: Boolean,
 	student: { type: Schema.Types.ObjectId, ref: 'Student'},
-'''
+```
 
 # REST Endpoints
 Name                           | Method | Path
