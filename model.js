@@ -1,24 +1,7 @@
-//////////////////First username: staff Password: Liahona2022
-
-//login using: mongo "mongodb+srv://logbookcluster.fkflk.mongodb.net/Students" --username staff
 
 const mongoose = require ('mongoose')
 const { Schema } = mongoose;
 mongoose.connect('mongodb+srv://staff:Liahona2022@logbookcluster.fkflk.mongodb.net/Students?retryWrites=true&w=majority');
-/*
-const schema = new mongoose.Schema({
-	name: {
-		type: String,
-		required: [true, "name is required."]
-	},
-	species: {
-		type: String,
-		required: [true, "species is required."]
-	}
-});
-
-const ASDF = mongoose.model('asdf', schema);
-*/
 const studentSchema = new mongoose.Schema({
 	fname: {
 		type: String,
@@ -36,9 +19,8 @@ const studentSchema = new mongoose.Schema({
 		type: Date,
 		required: [true, "Date of Arrival is required."]
 	},
-	essays: [{ type: Schema.Types.ObjectId, ref: 'Essay'}],
-	notes: [{ type: Schema.Types.ObjectId, ref: 'Note'}],
-	points: Number,
+//	essays: [{ type: Schema.Types.ObjectId, ref: 'Essay'}],
+//	notes: [{ type: Schema.Types.ObjectId, ref: 'Note'}],
 });
 
 const Student = mongoose.model('Student', studentSchema);
@@ -91,6 +73,7 @@ module.exports = {
 	Note: Note
 };
 
+////////////////////////////////NOTES//////////////////////////////////
 /*
 const Note = mongoose.model('Note', {
 	student: Object,
@@ -110,4 +93,18 @@ const Student = mongoose.model('Student', {
 	essays: Array, //Use Subdocument?
 	notes: Array
 });
+*/
+/*
+const schema = new mongoose.Schema({
+	name: {
+		type: String,
+		required: [true, "name is required."]
+	},
+	species: {
+		type: String,
+		required: [true, "species is required."]
+	}
+});
+
+const ASDF = mongoose.model('asdf', schema);
 */

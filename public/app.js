@@ -95,8 +95,6 @@ var app = new Vue({
 			data += "&lname=" +encodeURIComponent(this.inputLname);
 			data += "&birthday=" +encodeURIComponent(this.inputBirthday);
 			data += "&doa=" +encodeURIComponent(this.inputDoa);
-			//data += "&weight=" +encodeURIComponent(this.inputWeight);
-
 			fetch("https://essay-log-book.herokuapp.com/students", {
 				method: "POST",
 				body: data,
