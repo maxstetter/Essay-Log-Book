@@ -97,20 +97,22 @@ app.get('/essays', (req, res) => {
 
 app.post('/essays', (req, res) =>{
     console.log("raw request body: ", req.body);
-    asdf = new Date(req.body.time);
-    let month = asdf.getMonth() + 1;
-    let day = asdf.getDate();
-    let year = asdf.getFullYear();
+    rawdate = new Date(req.body.time);
+    let month = rawdate.getMonth() + 1;
+    let day = rawdate.getDate();
+    let year = rawdate.getFullYear();
     console.log("month:", month);
     console.log("day:", day);
     console.log("year:", year);
+    formatdate = month + '/' + day + '/' + year;
     var essay = new Essay({
         size: req.body.size,
         reason: req.body.reason,
         time: req.body.time,
         from: req.body.from,
         completed: false,
-        student: req.body.student
+        student: req.body.student,
+        strdate: formatdate
     });
     essay.save().then(()=> {
         res.status(201).send("Essay Logged.")

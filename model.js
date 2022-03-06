@@ -43,7 +43,7 @@ const essaySchema = new mongoose.Schema({
 		type: String,
 		required: [true, "Essay from is required."]
 	},
-	asdf: {
+	strdate: {
 		type: String,
 	},
 	completed: Boolean,
