@@ -176,9 +176,9 @@ app.post('/students', (req, res) => {
     let yearbday = rawdatebday.getFullYear();
     formatdatebday = monthbday + '/' + daybday + '/' + yearbday;
     rawdatedoa = new Date(req.body.date);
-    let month = rawdate.getMonth() + 1;
-    let day = rawdate.getDate();
-    let year = rawdate.getFullYear();
+    let month = rawdatedoa.getMonth() + 1;
+    let day = rawdatedoa.getDate();
+    let year = rawdatedoa.getFullYear();
     formatdatedoa = month + '/' + day + '/' + year;
     var student = new Student({
         fname: req.body.fname,
