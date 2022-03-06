@@ -19,6 +19,12 @@ const studentSchema = new mongoose.Schema({
 		type: Date,
 		required: [true, "Date of Arrival is required."]
 	},
+	strdatebday: {
+		type: String,
+	},
+	strdatedoa: {
+		type: String,
+	},
 //	essays: [{ type: Schema.Types.ObjectId, ref: 'Essay'}],
 //	notes: [{ type: Schema.Types.ObjectId, ref: 'Note'}],
 });
@@ -65,6 +71,9 @@ const noteSchema = new mongoose.Schema({
 	from: {
 		type: String,
 		required: [true, "Prognote from is required."]
+	},
+	strdate: {
+		type: String,
 	},
 	student: { type: Schema.Types.ObjectId, ref: 'Student'},
 });

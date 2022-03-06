@@ -101,9 +101,6 @@ app.post('/essays', (req, res) =>{
     let month = rawdate.getMonth() + 1;
     let day = rawdate.getDate();
     let year = rawdate.getFullYear();
-    console.log("month:", month);
-    console.log("day:", day);
-    console.log("year:", year);
     formatdate = month + '/' + day + '/' + year;
     var essay = new Essay({
         size: req.body.size,
@@ -143,11 +140,17 @@ app.get('/notes', (req, res) => {
 
 app.post('/notes', (req, res) => {
     console.log("Raw request body: ", req.body);
+    rawdate = new Date(req.body.date);
+    let month = rawdate.getMonth() + 1;
+    let day = rawdate.getDate();
+    let year = rawdate.getFullYear();
+    formatdate = month + '/' + day + '/' + year;
     var note = new Note({
         prognote: req.body.prognote,
         date: req.body.date,
         from: req.body.from,
-        student: req.body.student
+        student: req.body.student,
+        strdate: formatdate
     });
     note.save().then(()=> {
     res.status(201).send("Note Saved")
@@ -167,6 +170,16 @@ app.post('/notes', (req, res) => {
 
 app.post('/students', (req, res) => {
     console.log("Raw request body: ", req.body);
+    rawdatebday = new Date(req.body.birthday);
+    let monthbday = rawdatebday.getMonth() + 1;
+    let daybday = rawdatebday.getDate();
+    let yearbday = rawdatebday.getFullYear();
+    formatdatebday = monthbday + '/' + daybday + '/' + yearbday;
+    rawdatedoa = new Date(req.body.date);
+    let month = rawdate.getMonth() + 1;
+    let day = rawdate.getDate();
+    let year = rawdate.getFullYear();
+    formatdatedoa = month + '/' + day + '/' + year;
     var student = new Student({
         fname: req.body.fname,
         lname: req.body.lname,
@@ -174,7 +187,9 @@ app.post('/students', (req, res) => {
         doa: req.body.doa,
         points: 0,
         essays: [],
-        notes: []
+        notes: [],
+        strdatebday: formatdatebday,
+        strdatedoa: formatdatedoa
     });
     student.save().then(()=> {
     res.status(201).send("Student Saved")
