@@ -218,7 +218,7 @@ var app = new Vue({
 			return true;
 		},
 		validateNFrom: function (){
-			if (this.inputNFrom.length == 0){
+			if (this.inputNfrom.length == 0){
 				return false;
 			}
 			return true;
