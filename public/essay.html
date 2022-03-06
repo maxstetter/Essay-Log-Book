@@ -35,7 +35,7 @@
 					Student: <select v-model="selectStudent">
 						<option v-for="student in Students" :value="student._id" >{{student.fname}} {{student.lname}}</option>
 					</select>
-					Reason: <input type="text" v-model="inputReason" minlength="5" required>
+					Reason: <input type="text" v-model="inputReason">
 					Size: <input type="number" v-model="inputSize">
 					From: <input type="text" v-model="inputFrom">
 					Date: <input type="date" class="question" v-model="inputEdate">

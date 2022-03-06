@@ -137,16 +137,19 @@ var app = new Vue({
 		createEssay: function () {
 		
 			if (!this.validateSize()){
-				alert("SHADDUP!")
+				alert("Invalid Size.")
 				return;
 			}
 			if (!this.validateDate()){
+				alert("Invalid Date.")
 				return;
 			}
 			if (!this.validateReason()){
+				alert("Invalid Reason.")
 				return;
 			}
 			if (!this.validateFrom()){
+				alert("Invalid From.")
 				return;
 			}
 
