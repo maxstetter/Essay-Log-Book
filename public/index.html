@@ -43,8 +43,8 @@
 				<ul>
 					<li v-for="student in Students">
 						<h3>{{student.fname}} {{student.lname}}</h3>
-						<strong>Birthday:</strong> {{student.birthday}}<br><br>
-						<strong>Date of Arrival:</strong> {{student.doa}}<br><br>
+						<strong>Birthday:</strong> {{student.strdatebday}}<br><br>
+						<strong>Date of Arrival:</strong> {{student.strdatedoa}}<br><br>
 					<button @click="deleteStudent(student)">Delete</button>
 					</li>
 				</ul>

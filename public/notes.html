@@ -47,7 +47,7 @@
 					<li v-for="note in Notes">
 						<div v-for="student in Students" v-if="student._id == note.student"><h3>{{student.fname}} {{student.lname}}</h3></div>
                         <strong>From:</strong> {{note.from}}<br><br>
-                    	<strong>Date:</strong> {{note.date}}<br><br>
+                    	<strong>Date:</strong> {{note.strdate}}<br><br>
                         <strong>Note:</strong>  
 						<span class="note" v-if="!note.edit" v-on:click="$set(note, 'edit', !note.edit)">{{note.prognote}}<br><br></span>
 							<div v-if="note.edit">
