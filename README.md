@@ -49,6 +49,12 @@ https://essay-log-book.herokuapp.com/
 		type: Date,
 		required: [true, "Date of Arrival is required."]
 	},
+	strdatebday: {
+		type: String,
+	},
+	strdatedoa: {
+		type: String,
+	},
 ```
 
 ## Note Schema
@@ -64,6 +70,9 @@ https://essay-log-book.herokuapp.com/
 	from: {
 		type: String,
 		required: [true, "Prognote from is required."]
+	},
+	strdate: {
+		type: String,
 	},
 	student: { type: Schema.Types.ObjectId, ref: 'Student'},
 ```
@@ -85,6 +94,9 @@ https://essay-log-book.herokuapp.com/
 	from: {
 		type: String,
 		required: [true, "Essay from is required."]
+	},
+	strdate: {
+		type: String,
 	},
 	completed: Boolean,
 	student: { type: Schema.Types.ObjectId, ref: 'Student'},
