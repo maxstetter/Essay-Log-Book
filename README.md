@@ -103,5 +103,4 @@ Update essay member         | PUT    | /essays/*\<id\>*
 Update note member          | PUT    | /notes/*\<id\>*
 Delete student member       | DELETE | /students/*\<id\>*
 Delete essay member         | DELETE | /essays/*\<id\>*
-Delete note member          | DELETE | /notes/*\<id\>*
 
