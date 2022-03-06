@@ -99,7 +99,7 @@ app.post('/essays', (req, res) =>{
     console.log("raw request body: ", req.body);
     asdf = new Date(req.body.time);
     let month = asdf.getMonth() + 1;
-    let day = asdf.getDay();
+    let day = asdf.getDate();
     let year = asdf.getFullYear();
     console.log("month:", month);
     console.log("day:", day);
