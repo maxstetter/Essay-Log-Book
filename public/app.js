@@ -60,24 +60,28 @@ var app = new Vue({
 		
 		validatefName: function (){
 			if (this.inputFname.length == 0){
+				alert("Please enter a first name.")
 				return false;
 			}
 			return true;
 		},
 		validatelName: function (){
 			if (this.inputLname.length == 0){
+				alert("Please enter a last name.")
 				return false;
 			}
 			return true;
 		},
 		validateBirthday: function (){
 			if (this.inputBirthday.length == 0){
+				alert("Please enter a birthday.")
 				return false;
 			}
 			return true;
 		},
 		validateDoa: function (){
 			if (this.inputDoa.length == 0){
+				alert("Please enter a date of arrival.")
 				return false;
 			}
 			return true;
@@ -201,7 +205,40 @@ var app = new Vue({
 			})
 		},
 		
+		validateNote: function (){
+			if (this.inputNote.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateNDate: function (){
+			if (this.inputNdate.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateNFrom: function (){
+			if (this.inputNFrom.length == 0){
+				return false;
+			}
+			return true;
+		},
+		
 		createNote: function(){
+			
+			if (!this.validateNote()){
+				alert("Cannot have an empty note.")
+				return;
+			}
+			if (!this.validateNDate()){
+				alert("Invalid Date.")
+				return;
+			}
+			if (!this.validateNFrom()){
+				alert("Invalid From.")
+				return;
+			}
+			
 			var data = "prognote=" +encodeURIComponent(this.inputNote);
 			data += "&date=" +encodeURIComponent(this.inputNdate);
 			data += "&from=" +encodeURIComponent(this.inputNfrom);
