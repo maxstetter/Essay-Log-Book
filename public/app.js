@@ -191,7 +191,6 @@ var app = new Vue({
 
 		editNote: function(note){
 			var data = "prognote=" +note.prognote;
-			console.log("ASDF")
 			fetch("https://essay-log-book.herokuapp.com/notes/"+note._id, { 
 				method: "PUT",
 				body: data,
