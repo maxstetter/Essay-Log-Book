@@ -43,6 +43,9 @@ const essaySchema = new mongoose.Schema({
 		type: String,
 		required: [true, "Essay from is required."]
 	},
+	asdf: {
+		type: String,
+	},
 	completed: Boolean,
 
 	student: { type: Schema.Types.ObjectId, ref: 'Student'},

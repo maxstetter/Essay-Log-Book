@@ -97,6 +97,13 @@ app.get('/essays', (req, res) => {
 
 app.post('/essays', (req, res) =>{
     console.log("raw request body: ", req.body);
+    asdf = new Date(req.body.time);
+    let month = asdf.getMonth() + 1;
+    let day = asdf.getDay();
+    let year = asdf.getFullYear();
+    console.log("month:", month);
+    console.log("day:", day);
+    console.log("year:", year);
     var essay = new Essay({
         size: req.body.size,
         reason: req.body.reason,
