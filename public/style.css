@@ -26,6 +26,7 @@ body{
     padding-right: 3%;
     padding-bottom: 1%;
 }
+
 .activity{
     background-color: #003e29;
     padding-top: 15px;
@@ -43,6 +44,7 @@ justify-content: space-between;
 input{
     background-color: #A2E4B8;
     color: #003e29;
+    margin-right: 3%;
 }
 
 .question{
@@ -95,7 +97,9 @@ select{
     width: 50%;
     height: 80px;
     background-color: #A2E4B8;
+    margin-right: 3%;
 }
+
 
 
 
