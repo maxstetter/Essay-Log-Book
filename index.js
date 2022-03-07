@@ -19,7 +19,7 @@ app.put('/essays/:essayId', (req, res)=> {
         {completed: req.body.completed
     }).then((essay) => {
         if(essay){
-            res.sendStatus(202);
+            res.sendStatus(204);
         } else {
             res.sendStatus(500);
         }
@@ -32,7 +32,7 @@ app.put('/notes/:noteId', (req, res)=> {
         {prognote: req.body.prognote
     }).then((note) => {
         if(note){
-            res.sendStatus(202);
+            res.sendStatus(204);
         } else {
             res.sendStatus(500);
         }

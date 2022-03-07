@@ -50,7 +50,7 @@ var app = new Vue({
 		retreiveStudent: function (student) {
 			fetch("https://essay-log-book.herokuapp.com/students/"+student._id, { method: "GET"
 			}).then(response => {
-				if (response.status == 202){
+				if (response.status == 204){
 					this.fetchStudentsFromServer();
 				} else {
 					console.error("Error retrieving student: ", student);
@@ -181,7 +181,7 @@ var app = new Vue({
 			var data = "completed=" +essay.completed;
 			fetch("https://essay-log-book.herokuapp.com/essays/"+essay._id, { method: "PUT", body: data, headers: {"Content-Type": "application/x-www-form-urlencoded"}
 			}).then(response => {
-				if(response.status == 202){
+				if(response.status == 204){
 					this.fetchEssaysFromServer();
 				} else {
 					console.error("Error marking essay.", essay);
@@ -196,7 +196,7 @@ var app = new Vue({
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
 			}).then(response => {
-				if(response.status == 202){
+				if(response.status == 204){
 					this.fetchNotesFromServer();
 				} else {
 					console.error("Error editing note.", note);
