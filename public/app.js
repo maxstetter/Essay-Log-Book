@@ -26,9 +26,9 @@ var app = new Vue({
 		},
 		switchEssay: function(){
 			console.log("ASDF ESSAY")
-			divEssay = true;
-			divStudent = false;
-			divNote = false;
+			this.divEssay = true;
+			this.divStudent = false;
+			this.divNote = false;
 		},
 
 		deleteStudent: function (student) {
