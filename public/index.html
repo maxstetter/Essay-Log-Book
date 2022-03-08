@@ -38,7 +38,7 @@
 					Date of Arrival: <input type="date" class="question" v-model="inputDoa">
 					<button v-on:click="createStudent">Create</button>
 			</div>
-			<div id="bottom">
+			<div id="bottom" v-show="divEssay">
 				<h1>Students</h1>
 				<ul>
 					<li v-for="student in Students">
