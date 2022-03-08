@@ -109,8 +109,7 @@ app.post('/essays', (req, res) =>{
         from: req.body.from,
         completed: false,
         student: req.body.student,
-        strdate: formatdate,
-        NAME: student.fname + student.lname
+        strdate: formatdate
     });
     essay.save().then(()=> {
         res.status(201).send("Essay Logged.")
