@@ -200,6 +200,8 @@ nav{
     color: #003e29;
     letter-spacing: 3px;
     font-size: 14px;
+    background-color: white;
+    padding: 3%;
 }
 
 .burger{
