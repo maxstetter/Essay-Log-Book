@@ -25,12 +25,25 @@ var app = new Vue({
 		clickMe: function() {
 		},
 		switchEssay: function(){
-			console.log("ASDF ESSAY")
 			this.divEssay = true;
 			this.divStudent = false;
 			this.divNote = false;
 			
 			this.fetchEssaysFromServer();
+		},
+		switchStudent: function(){
+			this.divEssay = false;
+			this.divStudent = true;
+			this.divNote = false;
+			
+			this.fetchStudentsFromServer();
+		},
+		switchNote: function(){
+			this.divEssay = false;
+			this.divStudent = false;
+			this.divNote = true;
+			
+			this.fetchNotesFromServer();
 		},
 
 		deleteStudent: function (student) {
