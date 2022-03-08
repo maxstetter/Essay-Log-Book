@@ -28,7 +28,7 @@
 			</div>
 		</nav>
 		<div id="app">
-			<div class="activity">
+			<div class="activity" v-show="divStudent">
 				<h1>Create a New Student Below</h1>
 			</div>
 			<div class="top" v-show="divStudent">
@@ -49,7 +49,39 @@
 					</li>
 				</ul>
 			</div>
-
+			<div class="activity" v-show="divEssay">
+				<h1>Log an Essay</h1>
+			</div>
+			<div class="top" v-show="divEssay">
+					Student: <select v-model="selectStudent">
+						<option v-for="student in Students" :value="student._id" >{{student.fname}} {{student.lname}}</option>
+					</select>
+					Reason: <input type="text" v-model="inputReason">
+					Size: <input type="number" v-model="inputSize">
+					From: <input type="text" v-model="inputFrom">
+					Date: <input type="date" class="question" v-model="inputEdate">
+					
+					<button v-on:click="createEssay">Log</button>
+			</div>
+			<div class="bottom" v-show="divEssay">
+				<h1>Essays</h1>
+				<ul>
+					<li v-for="essay in Essays" :style="[essay.completed ? {'background-color': '#A2E4B8', 'transition': 'background-color 1s'} : {'background-color': '#ff7f7f', 'transition': 'background-color 1s'}]">	
+						<div v-for="student in Students" v-if="student._id == essay.student"><h3>{{student.fname}} {{student.lname}}</h3></div>
+						<strong>Size:</strong> {{essay.size}}<br><br>
+						<strong>Reason:</strong> {{essay.reason}}<br><br>
+						<strong>Date:</strong> {{essay.strdate}}<br><br>
+						<strong>From:</strong> {{essay.from}}<br><br>
+						<strong>Completed:</strong> 
+						<label class="switch">
+							<input v-model="essay.completed" @change="markEssay(essay)" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+						<br>
+						<button @click="deleteEssay(essay)" :style="[essay.completed ? {'background-color': '#A2E4B8', 'transition': 'background-color 1s'} : {'background-color': '#ff7f7f', 'transition': 'background-color 1s'}]">Delete</button>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 		<script src="app.js"></script>
