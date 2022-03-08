@@ -196,7 +196,10 @@ nav{
     font-size: 14px;
 }
 .nav-links button{
-    background-color: black;
+    text-decoration: none;
+    color: #003e29;
+    letter-spacing: 3px;
+    font-size: 14px;
 }
 
 .burger{
