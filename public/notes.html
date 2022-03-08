@@ -32,7 +32,7 @@
                 <div class="activity">
 					<h1>Progress Notes</h1>
                 </div> 
-			<div id="top">
+			<div class="top">
 					Student: <select v-model="selectStudent">
 						<option v-for="student in Students" :value="student._id">{{student.fname}} {{student.lname}}</option>
 					</select>
@@ -41,7 +41,7 @@
 					Note: <textarea id="note" v-model="inputNote"></textarea>
 					<button v-on:click="createNote">Log</button>
 			</div>
-			<div id="bottom">
+			<div class="bottom">
 				<h1>Notes</h1>
 				<ul>
 					<li v-for="note in Notes">

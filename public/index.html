@@ -31,14 +31,14 @@
 			<div class="activity">
 				<h1>Create a New Student Below</h1>
 			</div>
-			<div id="top" v-show="divStudent">
+			<div class="top" v-show="divStudent">
 					First Name: <input type="text" class="question" v-model="inputFname">
 					Last Name: <input type="text" class="question" v-model="inputLname">
 					Birthday: <input type="date" class="question" v-model="inputBirthday">
 					Date of Arrival: <input type="date" class="question" v-model="inputDoa">
 					<button v-on:click="createStudent">Create</button>
 			</div>
-			<div id="bottom" v-show="divEssay">
+			<div class="bottom" v-show="divStudent">
 				<h1>Students</h1>
 				<ul>
 					<li v-for="student in Students">
@@ -49,6 +49,7 @@
 					</li>
 				</ul>
 			</div>
+
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 		<script src="app.js"></script>

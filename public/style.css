@@ -15,7 +15,7 @@ body{
     padding-right: 5%;
 }
 */
-#top{
+.top{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -69,18 +69,18 @@ button:hover {
     color: #fff;
 }
 
-#bottom{
+.bottom{
     margin-left: 2%;
     margin-right: 2%;
 }
-#bottom > h1{
+.bottom > h1{
     color: #003e29;
 }
 ul{
     list-style: none;
 }
 
-#bottom ul li{
+.bottom ul li{
     margin-top: 3%;
     padding: 1%;
     border: 2px solid #003e29;
