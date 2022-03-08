@@ -6,6 +6,7 @@
 		<link rel="icon" href="http://clipart-library.com/images/6cyXxxnxi.png">
 	</head>
 	<body>
+		<div id="app">
 		<nav>
 			<div class="logo">
 				<h4>Essay Log Book</h4>
@@ -13,12 +14,15 @@
 			<ul class="nav-links">
 				<li>
 					<a href="index.html">Students</a>
+					<button @click="switchStudent">student</button>
 				</li>
 				<li>
 					<a href="essay.html">Essays</a>
+					<button @click="switchEssay">essay</button>
 				</li>
 				<li>
 					<a href="notes.html">Notes</a>
+					<button @click="switchNote">Note</button>
 				</li>
 			</ul>
 			<div class="burger">
@@ -27,10 +31,6 @@
 				<div class="line3"></div>
 			</div>
 		</nav>
-		<div id="app">
-					<button @click="switchEssay">essay</button>
-					<button @click="switchStudent">student</button>
-					<button @click="switchNote">Note</button>
 			<div class="activity" v-show="divStudent">
 				<h1>Create a New Student Below</h1>
 			</div>
