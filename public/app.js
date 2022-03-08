@@ -25,6 +25,7 @@ var app = new Vue({
 		clickMe: function() {
 		},
 		switchEssay: function(){
+			console.log("ASDF ESSAY")
 			divEssay = true;
 			divStudent = false;
 			divNote = false;
