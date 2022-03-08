@@ -29,6 +29,8 @@ var app = new Vue({
 			this.divEssay = true;
 			this.divStudent = false;
 			this.divNote = false;
+			
+			this.fetchEssaysFromServer();
 		},
 
 		deleteStudent: function (student) {
