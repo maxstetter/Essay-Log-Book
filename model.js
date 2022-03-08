@@ -55,6 +55,9 @@ const essaySchema = new mongoose.Schema({
 	completed: Boolean,
 
 	student: { type: Schema.Types.ObjectId, ref: 'Student'},
+	NAME: {
+		type: String
+	},
 });
 
 const Essay = mongoose.model('Essay', essaySchema);
