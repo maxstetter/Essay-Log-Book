@@ -17,6 +17,9 @@ var app = new Vue({
 		inputNfrom: "",
 		inputNdate: "",
 		inputNote: "",
+		divStudent: true,
+		divEssay: false,
+		divNote: false,
 	},
 	methods: {
 		clickMe: function() {
