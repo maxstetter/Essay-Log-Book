@@ -13,6 +13,7 @@
 			<ul class="nav-links">
 				<li>
 					<a href="index.html">Students</a>
+					<button @click="switchEssay"></button>
 				</li>
 				<li>
 					<a href="essay.html">Essays</a>
@@ -49,6 +50,7 @@
 					</li>
 				</ul>
 			</div>
+
 			<div class="activity" v-show="divEssay">
 				<h1>Log an Essay</h1>
 			</div>
@@ -80,6 +82,38 @@
 						<br>
 						<button @click="deleteEssay(essay)" :style="[essay.completed ? {'background-color': '#A2E4B8', 'transition': 'background-color 1s'} : {'background-color': '#ff7f7f', 'transition': 'background-color 1s'}]">Delete</button>
 					</li>
+				</ul>
+			</div>
+
+                <div class="activity" v-show="divNote">
+					<h1>Progress Notes</h1>
+                </div> 
+			<div class="top" v-show="divNote">
+					Student: <select v-model="selectStudent">
+						<option v-for="student in Students" :value="student._id">{{student.fname}} {{student.lname}}</option>
+					</select>
+					From: <input type="text" v-model="inputNfrom">
+					Date: <input type="date" class="question" v-model="inputNdate">
+					Note: <textarea id="note" v-model="inputNote"></textarea>
+					<button v-on:click="createNote">Log</button>
+			</div>
+			<div class="bottom" v-show="divNote">
+				<h1>Notes</h1>
+				<ul>
+					<li v-for="note in Notes">
+						<div v-for="student in Students" v-if="student._id == note.student"><h3>{{student.fname}} {{student.lname}}</h3></div>
+                        <strong>From:</strong> {{note.from}}<br><br>
+                    	<strong>Date:</strong> {{note.strdate}}<br><br>
+                        <strong>Note:</strong>  
+						<span class="note" v-if="!note.edit" v-on:click="$set(note, 'edit', !note.edit)">{{note.prognote}}<br><br></span>
+							<div v-if="note.edit">
+								<textarea id="EDITNOTE" name="EDITNOTE" rows="10" cols="50" v-model="note.prognote">{{note.prognote}}</textarea>
+							</div>
+							<button v-if="!note.edit" v-on:click="$set(note, 'edit', !note.edit)">
+								<span v-if="!note.edit">Edit</span>
+									<button v-if="note.edit" @click="editNote(note)">Save</button>
+							</button>
+                    </li>
 				</ul>
 			</div>
 		</div>

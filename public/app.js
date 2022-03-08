@@ -17,14 +17,18 @@ var app = new Vue({
 		inputNfrom: "",
 		inputNdate: "",
 		inputNote: "",
-		divStudent: false,
-		divEssay: true,
+		divStudent: true,
+		divEssay: false,
 		divNote: false,
 	},
 	methods: {
 		clickMe: function() {
 		},
-
+		switchEssay: function(){
+			divEssay = true;
+			divStudent = false;
+			divNote = false;
+		},
 
 		deleteStudent: function (student) {
 			console.log("student._id: ", student._id);

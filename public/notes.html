@@ -29,10 +29,10 @@
 		</nav>
 		<div id="app">
 
-                <div class="activity">
+                <div class="activity" v-show="divNote">
 					<h1>Progress Notes</h1>
                 </div> 
-			<div class="top">
+			<div class="top" v-show="divNote">
 					Student: <select v-model="selectStudent">
 						<option v-for="student in Students" :value="student._id">{{student.fname}} {{student.lname}}</option>
 					</select>
@@ -41,7 +41,7 @@
 					Note: <textarea id="note" v-model="inputNote"></textarea>
 					<button v-on:click="createNote">Log</button>
 			</div>
-			<div class="bottom">
+			<div class="bottom" v-show="divNote">
 				<h1>Notes</h1>
 				<ul>
 					<li v-for="note in Notes">
