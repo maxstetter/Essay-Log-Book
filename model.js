@@ -110,6 +110,15 @@ userSchema.methods.setEncryptedPassword = function (myPlainTextPassword) {
 	return promise;
 }
 
+userSchema.methods.verifyPassword = function (plainPassword) {
+    let promise = new Promise((resolve, reject) => {
+        bcrypt.compare(plainPassword, this.encryptedPassword).then(result => {
+            resolve(result);
+        });
+    });
+    return promise;
+}
+
 const User = mongoose.model('User', userSchema);
 
 
