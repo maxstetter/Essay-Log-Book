@@ -2,6 +2,9 @@ const express = require('express')
 const model = require('./model')
 const cors = require('cors');
 const { useSSRContext } = require('vue');
+const passport = require('passport')
+const session = require('express-session')
+const passportLocal = require('passport-local')
 const Essay = model.Essay;
 const Student = model.Student;
 const Note = model.Note;
@@ -15,6 +18,67 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json({}))
 
+//Passport stuff
+app.use(session({ secret: 'asdf1qaz2wsxhigrug9', resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new passportLocal.Strategy({
+   usernameField: 'email',
+   passwordField: 'plainPassword' 
+    }, function (email, plainPassword, done) {
+      //Authentication logic goes here
+      //call done when you have an answer from your own function.
+      
+      //1 - check if the user exists in the DB by email.
+      User.findOne({
+          email: email
+      }).then(function (user) {
+            if (user) {
+                //2 - if it does, verify the password using bcrypt
+                user.verifyPassword(plainPassword).then(function (result) {
+                    if (result) {
+                        done(user, false);
+                    } else {
+                        done(null, false);
+                    }
+                });
+          } else { 
+              done(null, false);
+          }
+      }).catch(function (err) {
+            //handle error here.  
+            done(err);
+      });
+      //3 - respond accordingly via the done() function.
+    }));
+
+passport.serializeUser( function (user, done) {
+    done(null, user._id);
+});
+
+passport.deserializeUser( function (userId, done) {
+    User.findOne({ _id: userId }).then( function (user) {
+        done(null, user);
+    }).catch(function (err) {
+        done(err);
+    });
+});
+
+app.post('/session', passport.authenticate('local'), function (req, res) {
+    console.log("authentication succeeded.")
+    res.sendStatus(201);
+});
+
+app.get('/session', function (req, res) {
+    if (req.user) {
+        res.json(req.user);
+    } else {
+        res.sendStatus(401);
+    }
+});
+
+//Crud operations
 app.put('/essays/:essayId', (req, res)=> {
     Essay.findOneAndUpdate({
         _id: req.params.essayId},
