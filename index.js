@@ -1,6 +1,7 @@
 const express = require('express')
 const model = require('./model')
-const cors = require('cors')
+const cors = require('cors');
+const { useSSRContext } = require('vue');
 const Essay = model.Essay;
 const Student = model.Student;
 const Note = model.Note;
@@ -90,11 +91,6 @@ app.get('/students/:studentId', (req, res) => {
     })
 })
 
-app.get('/essays', (req, res) => {
-    Essay.find().then((essays) => {
-        res.json(essays);
-    });
-})
 
 app.post('/essays', (req, res) =>{
     console.log("raw request body: ", req.body);
@@ -128,6 +124,12 @@ app.post('/essays', (req, res) =>{
     });
 })
 
+app.get('/users', (req, res) => {
+    User.find().then((users) => {
+        res.json(users);
+    })
+})
+
 app.get('/students', (req, res) => {
     Student.find().then((students) => {
         res.json(students);
@@ -136,6 +138,12 @@ app.get('/students', (req, res) => {
 app.get('/notes', (req, res) => {
     Note.find().then((notes) => {
         res.json(notes);
+    });
+})
+
+app.get('/essays', (req, res) => {
+    Essay.find().then((essays) => {
+        res.json(essays);
     });
 })
 
