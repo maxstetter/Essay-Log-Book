@@ -4,6 +4,7 @@ const cors = require('cors')
 const Essay = model.Essay;
 const Student = model.Student;
 const Note = model.Note;
+const User = model.User;
 
 const app = express()
 const port = process.env.PORT
@@ -204,6 +205,33 @@ app.post('/students', (req, res) => {
         } else {
             res.status(500).send("Server Error!")
         }
+    });
+})
+
+app.post('/users', (req, res) =>{
+    console.log("raw request body: ", req.body);
+    var user = new User({
+        fname: req.body.userFname,
+        lname: req.body.userLname,
+        email: req.body.email
+    });
+    //Method on the user.
+    user.setEncryptedPassword(req.body.password).then(function () {
+        //promise has now been fulfilled. 
+        user.save().then(()=> {
+            res.status(201).send("User created.")
+        }).catch((error)=> {
+            console.error("Error occured while creating a user.", error)
+            if(error.errors){
+                errors = {};
+                for (let e in error.errors){
+                    errorMessages[e] = error.errors[e].message;
+                }
+                res.status(422).json(errorMessages);
+            } else {
+                res.status(500).send("Server Error!")
+            }
+        });
     });
 })
 

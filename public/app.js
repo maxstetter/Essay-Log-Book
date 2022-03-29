@@ -5,6 +5,7 @@ var app = new Vue({
 		Essays: [],
 		Students: [],
 		Notes: [],
+		Users: [],
 		selectStudent: null,
 		inputFname: "" ,
 		inputLname: "",
@@ -20,6 +21,10 @@ var app = new Vue({
 		divStudent: true,
 		divEssay: false,
 		divNote: false,
+        userFname: "",
+        userLname: "",
+        email: "",
+		password: ""
 	},
 	methods: {
 		clickMe: function() {
@@ -278,6 +283,26 @@ var app = new Vue({
 			this.inputNdate = ""
 			this.inputNfrom = ""
 		},
+		
+		createUser: function () {	
+			var data = "fname=" +encodeURIComponent(this.userFname);
+			data += "&lname=" +encodeURIComponent(this.userLname);
+			data += "&email=" +encodeURIComponent(this.email);
+			data += "&doa=" +encodeURIComponent(this.password);
+			fetch("https://essay-log-book.herokuapp.com/users", {
+				method: "POST",
+				body: data,
+				headers: {"Content-Type": "application/x-www-form-urlencoded"}
+				 }).then((response) => {
+					 this.fetchUsersFromServer();
+				 });
+				 
+			this.userFname = ""
+			this.userLname = ""
+			this.email = ""
+			this.password = ""
+			console.log("User Created.")
+		},
 
 		fetchNotesFromServer: function(){ //vue assigns 'this' to the app
 			fetch("https://essay-log-book.herokuapp.com/notes").then((response) => {
@@ -306,10 +331,22 @@ var app = new Vue({
 					this.Students = data;
 				})
 			})
+		},
+		fetchUsersFromServer: function(){
+			fetch("https://essay-log-book.herokuapp.com/users").then((response) => {
+				console.log("users contacted.")
+				response.json().then((data) =>{
+					console.log("data: ", data);
+					this.Users = data;
+				})
+			})
 		}
 	},
+
+	//TODO: 'createUser' function
 	created: function () {
 	console.log("App is loaded and ready.");
+	this.fetchUsersFromServer();
 	this.fetchStudentsFromServer();
 	this.fetchEssaysFromServer();
 	this.fetchNotesFromServer();

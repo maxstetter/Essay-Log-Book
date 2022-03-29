@@ -1,5 +1,6 @@
 
 const mongoose = require ('mongoose')
+const bcrypt = require ('bcrypt');
 const { Schema } = mongoose;
 mongoose.connect('mongodb+srv://staff:Liahona2022@logbookcluster.fkflk.mongodb.net/Students?retryWrites=true&w=majority');
 const studentSchema = new mongoose.Schema({
@@ -79,11 +80,48 @@ const noteSchema = new mongoose.Schema({
 });
 const Note = mongoose.model('Note', noteSchema);
 
+const userSchema = new mongoose.Schema({
+	fname: {
+		type: String,
+		required: [true, "First name is required."]
+	},
+	lname: {
+		type: String,
+		required: [true, "Last name is required."]
+	},
+	email: {
+		type: String,
+		required: [true, "email is required."],
+        unique: true
+	},
+	encryptedPassword: {
+		type: String,
+		required: [true, "password is required."]
+	}
+})
+
+userSchema.methods.setEncryptedPassword = function (plainPassword) {
+	let promise = new Promise((resolve, reject) => {
+		bcrypt.hash(myPlainTextPassword, 12).then(hash => {
+			this.encryptedPassword = hash;
+			resolve();
+		});
+	});
+	return promise;
+}
+
+const User = mongoose.model('User', userSchema);
+
+
 module.exports = {
 	Student: Student,
 	Essay: Essay,
-	Note: Note
+	Note: Note,
+	User: User
 };
+
+
+
 
 ////////////////////////////////NOTES//////////////////////////////////
 /*

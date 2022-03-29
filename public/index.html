@@ -27,6 +27,18 @@
 				<div class="line2"></div>
 				<div class="line3"></div>
 			</div>
+		<div id="loginbox">
+			Email: <input type="text" class="question" v-model="email">
+			First Name: <input type="text" class="question" v-model="userFname">
+			Last Name: <input type="text" class="question" v-model="userLname">
+			Password: <input type="text" class="question" v-model="password">
+			<button @click="createUser">Create User</button>
+			<li v-for="user in Users">
+				<h3>User: {{user.email}}</h3>>
+				<h3>Password: {{user.encryptedPassword}}</h3>
+
+			</li>
+		</div>
 		</nav>
 			<div class="activity" v-show="divStudent">
 				<h1>Create a New Student Below</h1>
