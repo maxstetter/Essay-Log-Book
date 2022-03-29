@@ -343,7 +343,7 @@ var app = new Vue({
 		}
 	},
 
-	//TODO: 'createUser' function
+	//TODO: 'loginUser' function
 	created: function () {
 	console.log("App is loaded and ready.");
 	this.fetchUsersFromServer();
