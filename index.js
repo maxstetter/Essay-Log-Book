@@ -135,6 +135,7 @@ app.get('/students', (req, res) => {
         res.json(students);
     });
 })
+
 app.get('/notes', (req, res) => {
     Note.find().then((notes) => {
         res.json(notes);
