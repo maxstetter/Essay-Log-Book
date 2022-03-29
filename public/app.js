@@ -288,7 +288,7 @@ var app = new Vue({
 			var data = "fname=" +encodeURIComponent(this.userFname);
 			data += "&lname=" +encodeURIComponent(this.userLname);
 			data += "&email=" +encodeURIComponent(this.email);
-			data += "&doa=" +encodeURIComponent(this.password);
+			data += "&password=" +encodeURIComponent(this.password);
 			fetch("https://essay-log-book.herokuapp.com/users", {
 				method: "POST",
 				body: data,
