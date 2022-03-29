@@ -25,7 +25,7 @@ app.use(passport.session());
 
 passport.use(new passportLocal.Strategy({
    usernameField: 'email',
-   passwordField: 'plainPassword' 
+   passwordField: 'password' 
     }, function (email, plainPassword, done) {
       //Authentication logic goes here
       //call done when you have an answer from your own function.
