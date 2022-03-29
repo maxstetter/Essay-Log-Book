@@ -100,7 +100,7 @@ const userSchema = new mongoose.Schema({
 	}
 })
 
-userSchema.methods.setEncryptedPassword = function (plainPassword) {
+userSchema.methods.setEncryptedPassword = function (myPlainTextPassword) {
 	let promise = new Promise((resolve, reject) => {
 		bcrypt.hash(myPlainTextPassword, 12).then(hash => {
 			this.encryptedPassword = hash;
