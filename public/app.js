@@ -285,8 +285,8 @@ var app = new Vue({
 		},
 		
 		createUser: function () {	
-			var data = "fname=" +encodeURIComponent(this.userFname);
-			data += "&lname=" +encodeURIComponent(this.userLname);
+			var data = "userFname=" +encodeURIComponent(this.userFname);
+			data += "&userLname=" +encodeURIComponent(this.userLname);
 			data += "&email=" +encodeURIComponent(this.email);
 			data += "&password=" +encodeURIComponent(this.password);
 			fetch("https://essay-log-book.herokuapp.com/users", {

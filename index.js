@@ -285,8 +285,8 @@ app.post('/students', (req, res) => {
 app.post('/users', (req, res) =>{
     console.log("raw request body: ", req.body);
     var user = new User({
-        fname: req.body.fname,
-        lname: req.body.lname,
+        userFname: req.body.userFname,
+        userLname: req.body.userLname,
         email: req.body.email
     });
     //Method on the user.

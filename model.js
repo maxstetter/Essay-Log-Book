@@ -81,11 +81,11 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model('Note', noteSchema);
 
 const userSchema = new mongoose.Schema({
-	fname: {
+	userFname: {
 		type: String,
 		required: [true, "First name is required."]
 	},
-	lname: {
+	userLname: {
 		type: String,
 		required: [true, "Last name is required."]
 	},
