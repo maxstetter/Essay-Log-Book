@@ -38,7 +38,7 @@ passport.use(new passportLocal.Strategy({
                 //2 - if it does, verify the password using bcrypt
                 user.verifyPassword(plainPassword).then(function (result) {
                     if (result) {
-                        done(user, false);
+                        done(null, user);
                     } else {
                         done(null, false);
                     }
