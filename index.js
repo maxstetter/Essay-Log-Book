@@ -309,20 +309,6 @@ app.post('/users', (req, res) =>{
     });
 })
 
-app.post('/session', passport.authenticate('local'), function (req, res) {
-    console.log("authentication succeeded.")
-    res.sendStatus(201);
-});
-
-app.get('/me', function (req, res) {
-    if (req.user) {
-        res.json(req.user);
-    } else {
-        res.sendStatus(401);
-    }
-});
-
-
 app.listen(port, () => {
     console.log(`Essay App listening at http://localhost:${port}`)
 })
