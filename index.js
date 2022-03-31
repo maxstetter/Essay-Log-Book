@@ -47,6 +47,7 @@ passport.use(new passportLocal.Strategy({
               done(null, false);
           }
       }).catch(function (err) {
+          console.error(err);
             //handle error here.  
             done(err);
       });
