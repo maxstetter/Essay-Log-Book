@@ -297,7 +297,7 @@ app.post('/users', (req, res) =>{
         }).catch((error)=> {
             console.error("Error occured while creating a user.", error)
             if(error.errors){
-                errors = {};
+                var errorMessages = {};
                 for (let e in error.errors){
                     errorMessages[e] = error.errors[e].message;
                 }
