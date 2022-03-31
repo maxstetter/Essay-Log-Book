@@ -1,3 +1,4 @@
+const { includeBooleanAttr } = require("@vue/shared");
 
 var app = new Vue({
 	el: '#app',
@@ -292,7 +293,8 @@ var app = new Vue({
 			fetch("https://essay-log-book.herokuapp.com/users", {
 				method: "POST",
 				body: data,
-				headers: {"Content-Type": "application/x-www-form-urlencoded"}
+				headers: {"Content-Type": "application/x-www-form-urlencoded"},
+				credentials: "include"
 				 }).then((response) => {
 					 this.fetchUsersFromServer();
 				 });
