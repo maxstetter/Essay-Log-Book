@@ -72,6 +72,7 @@ app.post('/session', passport.authenticate('local'), function (req, res) {
 
 app.get('/session', function (req, res) {
     if (req.user) {
+        console.log("ASDFASDFASDF");
         res.json(req.user);
     } else {
         res.sendStatus(401);
