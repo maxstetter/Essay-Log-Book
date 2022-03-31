@@ -232,7 +232,7 @@ app.post('/notes', (req, res) => {
     }).catch((error)=> {
         console.error("Error occured while creating a note: ", error);
         if (error.errors){
-            errors = {};
+            var errorMessages = {};
             for (let e in error.errors) {
                 errorMessages[e] = error.errors[e].message;
             }
@@ -271,7 +271,7 @@ app.post('/students', (req, res) => {
     }).catch((error)=> {
         console.error("Error occured while creating a student: ", error);
         if (error.errors){
-            errors = {};
+            var errorMessages = {};
             for (let e in error.errors) {
                 errorMessages[e] = error.errors[e].message;
             }
