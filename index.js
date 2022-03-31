@@ -46,11 +46,11 @@ passport.use(new passportLocal.Strategy({
           } else { 
               done(null, false);
           }
-      })//.catch(function (err) {
-        //  console.error(err);
+      }).catch(function (err) {
+          console.error(err);
             //handle error here.  
-        //    done(err);
-      //});
+            done(err);
+      });
       //3 - respond accordingly via the done() function.
     }));
 
