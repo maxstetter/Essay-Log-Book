@@ -1,0 +1,255 @@
+body{
+    font-family: monaco, monospace;
+    /*font-family: 'Poppins', sans-serif;*/
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+/*
+#top{
+    background-color: #003e29;
+    color: #A2E4B8;
+    padding-top: 2%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+*/
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 12vh;
+    background-color: #003e29;
+    color:#A2E4B8;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 1%;
+}
+
+.activity{
+    background-color: #003e29;
+    padding-top: 15px;
+    padding-left: 1%;
+}
+.activity h1{
+    margin-bottom: 0px;
+    color: #A2E4B8;
+}
+/*
+.forms{
+justify-content: space-between;
+}
+*/
+input{
+    background-color: #A2E4B8;
+    color: #003e29;
+    margin-right: 3%;
+}
+
+.question{
+    display: inline-flex;
+    margin-right: 3%;
+}
+
+button{
+    background-color: #A2E4B8;
+    color: #003e29;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 14px 80px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 100;
+    transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+}
+button:hover {
+    color: #fff;
+}
+
+.bottom{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.bottom > h1{
+    color: #003e29;
+}
+ul{
+    list-style: none;
+}
+
+.bottom ul li{
+    margin-top: 3%;
+    padding: 1%;
+    border: 2px solid #003e29;
+    border-radius: 5px;
+}
+
+select{
+    background-color: #A2E4B8;
+    width: auto;
+    margin-right: 3%;
+}
+
+#note{
+    width: 45%;
+    height: 80px;
+    background-color: #A2E4B8;
+    margin-right: 3%;
+}
+
+
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #800000;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #003e29;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #003e29;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+}
+
+.logo{
+    color: #003e29;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+}
+
+.nav-links{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+}
+
+.nav-links li{
+    list-style: none;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: #003e29;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+.nav-links button{
+    text-decoration: none;
+    color: #003e29;
+    letter-spacing: 3px;
+    font-size: 14px;
+    background-color: white;
+    padding: 3%;
+    border: none;
+}
+
+.burger{
+    display: none;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background-color: #003e29; 
+}
+
+
+
+
+
+@media screen and (max-width:768px){
+    body{
+        overflow-x: hidden;
+    }
+
+    .nav-links{
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: white;
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li{
+        opacity: 0;
+    }
+
+    .burger{
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.nav-active{
+    transform: translateX(0%);
+}
