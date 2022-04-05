@@ -293,6 +293,8 @@ app.post('/users', (req, res) =>{
         email: req.body.email
     });
     //Method on the user.
+    //TODO: fix server crash when processing a blank password.
+    console.log("raw password request.", req.body.password);
     user.setEncryptedPassword(req.body.password).then(function () {
         //promise has now been fulfilled. 
         user.save().then(()=> {

@@ -297,7 +297,49 @@ var app = new Vue({
 			this.inputNfrom = ""
 		},
 		
+		validateuserFname: function (){
+			if (this.userFname.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateuserLname: function (){
+			if (this.userLname.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validateemail: function (){
+			if (this.email.length == 0){
+				return false;
+			}
+			return true;
+		},
+		validatepassword: function (){
+			if (this.password.length == 0){
+				return false;
+			}
+			return true;
+		},
+		
+		
 		createUser: function () {	
+			if (!this.validateuserFname()){
+				alert("Empty first name.")
+				return;
+			}
+			if (!this.validateuserLname()){
+				alert("Empty last name.")
+				return;
+			}
+			if (!this.validateemail()){
+				alert("Empty email.")
+				return;
+			}
+			if (!this.validatepassword()){
+				alert("Empty password.")
+				return;
+			}
 			var data = "userFname=" +encodeURIComponent(this.userFname);
 			data += "&userLname=" +encodeURIComponent(this.userLname);
 			data += "&email=" +encodeURIComponent(this.email);
