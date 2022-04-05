@@ -9,6 +9,7 @@
 		<div id="app">
 		<div id="loginContainer" v-if="loggedIn === false">
 			<div id="loginBody">
+				<h1>Essay Log Book</h1>
 				<input type="text" v-model="email" placeholder="Username">
 				<br />
 				<input type="password" v-model="password" placeholder="Password">
@@ -17,6 +18,17 @@
 			</div>
 		</div>
 		<div id="Loggedin" v-if="loggedIn">
+			<div id="loginbox" v-if="page === 'user'">
+				Email: <input type="text" class="question" v-model="email">
+				First Name: <input type="text" class="question" v-model="userFname">
+				Last Name: <input type="text" class="question" v-model="userLname">
+				Password: <input type="text" class="question" v-model="password">
+				<button @click="createUser">Create User</button>
+				<li v-for="user in Users">
+					<h3>User: {{user.email}}</h3>>
+					<h3>Name: {{user.fname}} {{user.lname}}</h3>
+				</li>
+			</div>
 			<nav>
 				<div class="logo">
 					<h4>Essay Log Book</h4>
@@ -37,17 +49,6 @@
 					<div class="line2"></div>
 					<div class="line3"></div>
 				</div>
-			<div id="loginbox">
-				Email: <input type="text" class="question" v-model="email">
-				First Name: <input type="text" class="question" v-model="userFname">
-				Last Name: <input type="text" class="question" v-model="userLname">
-				Password: <input type="text" class="question" v-model="password">
-				<button @click="createUser">Create User</button>
-				<li v-for="user in Users">
-					<h3>User: {{user.email}}</h3>>
-					<h3>Name: {{user.fname}} {{user.lname}}</h3>
-				</li>
-			</div>
 			</nav>
 			<div class="activity" v-if="page === 'student'">
 				<h1>Create a New Student Below</h1>

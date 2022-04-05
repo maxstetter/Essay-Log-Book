@@ -2,6 +2,7 @@
 //Comment the line below for local mode.
 //const { includeBooleanAttr } = require("@vue/shared");
 
+
 //const address = "https://essay-log-book.herokuapp.com/students/"
 const address = "http://localhost:3000/"
 
@@ -26,6 +27,7 @@ var app = new Vue({
 		inputNdate: "",
 		inputNote: "",
 		page: "student",
+		loggedIn: false,
 		divStudent: true,
 		divEssay: false,
 		divNote: false,
@@ -355,6 +357,33 @@ var app = new Vue({
 			this.email = ""
 			this.password = ""
 			console.log("User Created.")
+		},
+
+		loginUser: function(){
+			if(!this.validateemail()){
+				alert("Invalid username.")
+				return;
+			}
+			if(!this.validatepassword()){
+				alert("Invalid password.")
+				return;
+			}
+			var data = "email" +encodeURIComponent(this.email);
+			data += "&password" + encodeURIComponent(this.password);
+			fetch(address+"session", {
+				method: "POST",
+				body: data,
+				headers: {"Content-Type": "application/x-www-form-urlencoded"},
+				credentials: "include"
+			}).then((response) => {
+				if(response.status = 201){
+					this.loggedIn = true;
+					this.page = 'students';
+				} else{
+					alert("Invalid username or password.");
+					console.log("Someone attempted to login but failed.");
+				}
+			});
 		},
 
 		fetchNotesFromServer: function(){ //vue assigns 'this' to the app
