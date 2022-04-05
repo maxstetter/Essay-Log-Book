@@ -11,6 +11,7 @@ const Note = model.Note;
 const User = model.User;
 
 const app = express()
+//change to switch from local to web app.
 //const port = process.env.PORT
 const port = 3000
 
