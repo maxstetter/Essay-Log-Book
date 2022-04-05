@@ -25,6 +25,7 @@ var app = new Vue({
 		inputNfrom: "",
 		inputNdate: "",
 		inputNote: "",
+		page: "student",
 		divStudent: true,
 		divEssay: false,
 		divNote: false,
@@ -37,24 +38,27 @@ var app = new Vue({
 		clickMe: function() {
 		},
 		switchEssay: function(){
-			this.divEssay = true;
-			this.divStudent = false;
-			this.divNote = false;
+//			this.divEssay = true;
+//			this.divStudent = false;
+//			this.divNote = false;
+			this.page = "essay"
 			
 			this.fetchEssaysFromServer();
 		},
 		switchStudent: function(){
-			this.divEssay = false;
-			this.divStudent = true;
-			this.divNote = false;
-			
+//			this.divEssay = false;
+//			this.divStudent = true;
+//			this.divNote = false;
+			this.page = "student"
+
 			this.fetchStudentsFromServer();
 		},
 		switchNote: function(){
 			this.divEssay = false;
 			this.divStudent = false;
 			this.divNote = true;
-			
+			this.page = "note"
+
 			this.fetchNotesFromServer();
 		},
 

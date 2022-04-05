@@ -39,17 +39,17 @@
 			</li>
 		</div>
 		</nav>
-			<div class="activity" v-show="divStudent">
+			<div class="activity" v-if="page === 'student'">
 				<h1>Create a New Student Below</h1>
 			</div>
-			<div class="top" v-show="divStudent">
+			<div class="top" v-if="page === 'student'">
 					First Name: <input type="text" class="question" v-model="inputFname">
 					Last Name: <input type="text" class="question" v-model="inputLname">
 					Birthday: <input type="date" class="question" v-model="inputBirthday">
 					Date of Arrival: <input type="date" class="question" v-model="inputDoa">
 					<button v-on:click="createStudent">Create</button>
 			</div>
-			<div class="bottom" v-show="divStudent">
+			<div class="bottom" v-if="page === 'student'">
 				<h1>Students</h1>
 				<ul>
 					<li v-for="student in Students">
@@ -61,10 +61,10 @@
 				</ul>
 			</div>
 
-			<div class="activity" v-show="divEssay">
+			<div class="activity" v-if="page === 'essay'">
 				<h1>Log an Essay</h1>
 			</div>
-			<div class="top" v-show="divEssay">
+			<div class="top" v-if="page == 'essay'">
 					Student: <select v-model="selectStudent">
 						<option v-for="student in Students" :value="student._id" >{{student.fname}} {{student.lname}}</option>
 					</select>
@@ -75,7 +75,7 @@
 					
 					<button v-on:click="createEssay">Log</button>
 			</div>
-			<div class="bottom" v-show="divEssay">
+			<div class="bottom" v-if="page ==='essay'">
 				<h1>Essays</h1>
 				<ul>
 					<li v-for="essay in Essays" :style="[essay.completed ? {'background-color': '#A2E4B8', 'transition': 'background-color 1s'} : {'background-color': '#ff7f7f', 'transition': 'background-color 1s'}]">	
@@ -95,10 +95,10 @@
 				</ul>
 			</div>
 
-                <div class="activity" v-show="divNote">
+                <div class="activity" v-if="page ==='note'">
 					<h1>Progress Notes</h1>
                 </div> 
-			<div class="top" v-show="divNote">
+			<div class="top" v-if="page ==='note'">
 					Student: <select v-model="selectStudent">
 						<option v-for="student in Students" :value="student._id">{{student.fname}} {{student.lname}}</option>
 					</select>
@@ -107,7 +107,7 @@
 					Note: <textarea id="note" v-model="inputNote"></textarea>
 					<button v-on:click="createNote">Log</button>
 			</div>
-			<div class="bottom" v-show="divNote">
+			<div class="bottom" v-if="page ==='note'">
 				<h1>Notes</h1>
 				<ul>
 					<li v-for="note in Notes">
