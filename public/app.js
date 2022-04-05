@@ -1,5 +1,9 @@
 const { includeBooleanAttr } = require("@vue/shared");
 
+//const address = "https://essay-log-book.herokuapp.com/students/"
+const address = "http://localhost:3000/"
+
+
 var app = new Vue({
 	el: '#app',
 	data: {
@@ -54,7 +58,8 @@ var app = new Vue({
 
 		deleteStudent: function (student) {
 			console.log("student._id: ", student._id);
-			fetch("https://essay-log-book.herokuapp.com/students/"+student._id, { method: "DELETE"	
+			//fetch("https://essay-log-book.herokuapp.com/students/"+student._id, { method: "DELETE"	
+			fetch(address + "students/"+student._id, { method: "DELETE"	
 			}).then(response => {
 				if (response.status == 204){
 					this.fetchStudentsFromServer();
@@ -66,7 +71,8 @@ var app = new Vue({
 
 		deleteEssay: function (essay) {
 			console.log("essay._id: ", essay._id);
-			fetch("https://essay-log-book.herokuapp.com/essays/"+essay._id, { method: "DELETE"	
+			//fetch("https://essay-log-book.herokuapp.com/essays/"+essay._id, { method: "DELETE"	
+			fetch(address+"essays/"+essay._id, { method: "DELETE"	
 			}).then(response => {
 				if (response.status == 204){
 					this.fetchEssaysFromServer();
@@ -77,7 +83,8 @@ var app = new Vue({
 		},
 		
 		retreiveStudent: function (student) {
-			fetch("https://essay-log-book.herokuapp.com/students/"+student._id, { method: "GET"
+			//fetch("https://essay-log-book.herokuapp.com/students/"+student._id, { method: "GET"
+			fetch(address+"students/"+student._id, { method: "GET"
 			}).then(response => {
 				if (response.status == 204){
 					this.fetchStudentsFromServer();
@@ -128,7 +135,8 @@ var app = new Vue({
 			data += "&lname=" +encodeURIComponent(this.inputLname);
 			data += "&birthday=" +encodeURIComponent(this.inputBirthday);
 			data += "&doa=" +encodeURIComponent(this.inputDoa);
-			fetch("https://essay-log-book.herokuapp.com/students", {
+			//fetch("https://essay-log-book.herokuapp.com/students", {
+			fetch(address+"students", {
 				method: "POST",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -192,7 +200,8 @@ var app = new Vue({
 			data += "&from=" +encodeURIComponent(this.inputFrom);
 			data += "&student=" + encodeURIComponent(this.selectStudent);
 	//TODO: for every fetch request, will need to change url.				
-			fetch("https://essay-log-book.herokuapp.com/essays", {
+			//fetch("https://essay-log-book.herokuapp.com/essays", {
+			fetch(address+"essays", {
 				method: "POST",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -208,7 +217,8 @@ var app = new Vue({
 
 		markEssay: function(essay){
 			var data = "completed=" +essay.completed;
-			fetch("https://essay-log-book.herokuapp.com/essays/"+essay._id, { method: "PUT", body: data, headers: {"Content-Type": "application/x-www-form-urlencoded"}
+			//fetch("https://essay-log-book.herokuapp.com/essays/"+essay._id, { method: "PUT", body: data, headers: {"Content-Type": "application/x-www-form-urlencoded"}
+			fetch(address+"essays/"+essay._id, { method: "PUT", body: data, headers: {"Content-Type": "application/x-www-form-urlencoded"}
 			}).then(response => {
 				if(response.status == 204){
 					this.fetchEssaysFromServer();
@@ -220,7 +230,8 @@ var app = new Vue({
 
 		editNote: function(note){
 			var data = "prognote=" +note.prognote;
-			fetch("https://essay-log-book.herokuapp.com/notes/"+note._id, { 
+			//fetch("https://essay-log-book.herokuapp.com/notes/"+note._id, { 
+			fetch(address+"notes/"+note._id, { 
 				method: "PUT",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -272,7 +283,8 @@ var app = new Vue({
 			data += "&from=" +encodeURIComponent(this.inputNfrom);
 			data += "&student=" +encodeURIComponent(this.selectStudent);
 			
-			fetch("https://essay-log-book.herokuapp.com/notes", {
+			//fetch("https://essay-log-book.herokuapp.com/notes", {
+			fetch(address+"notes", {
 				method: "POST",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -290,7 +302,8 @@ var app = new Vue({
 			data += "&userLname=" +encodeURIComponent(this.userLname);
 			data += "&email=" +encodeURIComponent(this.email);
 			data += "&password=" +encodeURIComponent(this.password);
-			fetch("https://essay-log-book.herokuapp.com/users", {
+			//fetch("https://essay-log-book.herokuapp.com/users", {
+			fetch(address+"users", {
 				method: "POST",
 				body: data,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"},
@@ -307,7 +320,8 @@ var app = new Vue({
 		},
 
 		fetchNotesFromServer: function(){ //vue assigns 'this' to the app
-			fetch("https://essay-log-book.herokuapp.com/notes").then((response) => {
+			//fetch("https://essay-log-book.herokuapp.com/notes").then((response) => {
+			fetch(address+"notes").then((response) => {
 				console.log("server contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);
@@ -317,7 +331,8 @@ var app = new Vue({
 		},
 
 		fetchEssaysFromServer: function(){ //vue assigns 'this' to the app
-			fetch("https://essay-log-book.herokuapp.com/essays").then((response) => {
+			//fetch("https://essay-log-book.herokuapp.com/essays").then((response) => {
+			fetch(address+"essays").then((response) => {
 				console.log("server contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);
@@ -326,7 +341,8 @@ var app = new Vue({
 			});
 		},
 		fetchStudentsFromServer: function(){
-			fetch("https://essay-log-book.herokuapp.com/students").then((response) => {
+			//fetch("https://essay-log-book.herokuapp.com/students").then((response) => {
+			fetch(address+"students").then((response) => {
 				console.log("students contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);
@@ -335,7 +351,8 @@ var app = new Vue({
 			})
 		},
 		fetchUsersFromServer: function(){
-			fetch("https://essay-log-book.herokuapp.com/users").then((response) => {
+			//fetch("https://essay-log-book.herokuapp.com/users").then((response) => {
+			fetch(address+"users").then((response) => {
 				console.log("users contacted.")
 				response.json().then((data) =>{
 					console.log("data: ", data);

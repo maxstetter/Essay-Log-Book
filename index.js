@@ -11,7 +11,8 @@ const Note = model.Note;
 const User = model.User;
 
 const app = express()
-const port = process.env.PORT
+//const port = process.env.PORT
+const port = 3000
 
 app.use(express.static('public'));
 app.use(cors());
