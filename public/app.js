@@ -1,4 +1,6 @@
-const { includeBooleanAttr } = require("@vue/shared");
+
+//Comment the line below for local mode.
+//const { includeBooleanAttr } = require("@vue/shared");
 
 //const address = "https://essay-log-book.herokuapp.com/students/"
 const address = "http://localhost:3000/"
@@ -199,7 +201,6 @@ var app = new Vue({
 			data += "&time=" +encodeURIComponent(this.inputEdate);
 			data += "&from=" +encodeURIComponent(this.inputFrom);
 			data += "&student=" + encodeURIComponent(this.selectStudent);
-	//TODO: for every fetch request, will need to change url.				
 			//fetch("https://essay-log-book.herokuapp.com/essays", {
 			fetch(address+"essays", {
 				method: "POST",

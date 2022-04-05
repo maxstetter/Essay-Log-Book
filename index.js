@@ -75,7 +75,7 @@ app.post('/session', passport.authenticate('local'), function (req, res) {
 
 app.get('/session', function (req, res) {
     if (req.user) {
-        console.log("ASDFASDFASDF");
+        console.log(req.user.userFname + " " +req.user.userLname, "logged in.");
         res.json(req.user);
     } else {
         res.sendStatus(401);
