@@ -217,7 +217,34 @@ nav{
 }
 
 
+#loginContainer{
+    margin: 15% auto;
+    display: block;
+    width: 500px;
+    text-align: center;
+}
 
+#loginBody{
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin: 0 auto;
+    background-color: #A2E4B8;
+}
+
+#loginBody input{
+    margin-bottom: 10px;
+    width: 45%;
+    text-align: center;
+}
+
+#loginBody button{
+    background-color: #003e29;
+    color: #A2E4B8;
+}
+
+#loginBody button:hover{
+    color:#fff;
+}
 
 
 @media screen and (max-width:768px){
